@@ -1,10 +1,15 @@
-function App() {
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import SignUp from "./pages/signUp.jsx";
 
+function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold">Hello world!</h1>
+      <Routes>
+        <Route path="/sign-up" element={<SignUp />} />
+      </Routes>
     </>
   );
 }
 
-export default App
+export default App;
