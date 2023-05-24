@@ -1,6 +1,7 @@
 import axios from "axios";
 const axiosInstance = axios.create({
-  baseURL: "https://sportzify.onrender.com/api/v1/",
+  baseURL: "http://localhost:4001/api/",
+  withCredentials: true,
 });
 
 const axiosRequest = async (url, method = "GET", data = null) => {
@@ -18,21 +19,3 @@ const axiosRequest = async (url, method = "GET", data = null) => {
 };
 
 export default axiosRequest;
-
-
-
-// import axiosRequest from "./axiosRequest";
-
-// // Example usage in a component
-// const fetchData = async () => {
-//   try {
-//     const data = await axiosRequest("/data", "GET");
-//     console.log(data);
-//     // Process the response data
-//   } catch (error) {
-//     console.error("Error:", error.message);
-//     // Handle the error
-//   }
-// };
-
-// fetchData();
