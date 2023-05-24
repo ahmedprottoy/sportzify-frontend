@@ -2,6 +2,7 @@ import React from 'react'
 import signUpLogo from '../../assets/signup-logo.png'
 import Button from '../common/Button.jsx'
 import errorImg from "../../assets/error.png";
+import {Link} from 'react-router-dom'
 
 const signUpForm  = (props) => {
 
@@ -29,7 +30,10 @@ const signUpForm  = (props) => {
             </h1>
           </div>
 
-          <form onSubmit={handleSubmit} className="mt-8 grid grid-cols-6 gap-6 p-4">
+          <form
+            onSubmit={handleSubmit}
+            className="mt-8 grid grid-cols-6 gap-6 p-4"
+          >
             <div className="col-span-6 sm:col-span-3">
               <label for="username" className="labelField">
                 Username
@@ -115,9 +119,9 @@ const signUpForm  = (props) => {
 
               <p className="mt-4 text-md text-gray-500 sm:mt-0">
                 Already have an account?
-                <a href="#" className=" text-lg ml-3 text-sky-700 underline">
+                <Link to="/sign-in" className=" text-lg ml-3 text-sky-700 underline">
                   Log in
-                </a>
+                </Link>
                 .
               </p>
             </div>
