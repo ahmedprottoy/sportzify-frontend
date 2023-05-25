@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from '../components/Navbar/Navbar.jsx'
-import Card from '../components/card/Card.jsx'
+import Card from '../components/card/Card2.jsx'
 
 function HomePage() {
   return (
@@ -13,6 +13,9 @@ function HomePage() {
         </div>
 
         <Card />
+        <Card/>
+        <Card />
+        <Card/>
       </div>
     </div>
   );
