@@ -1,9 +1,20 @@
 import axiosRequest from "../utils/axios.util";
 
 
-const signUpReq = async (data) => {
+export const signUpReq = async (data) => {
+ 
   const response = await axiosRequest("v1/auth/sign-up", "POST", data);
   console.log(response);
 };
 
-export default signUpReq;
+
+export const signInReq = async (data) => {
+  
+  const response = await axiosRequest("v1/auth/sign-in", "POST", data);
+  console.log(response);
+};
+
+export const signOutReq = async () => {
+  const response = await axiosRequest("v1/auth/sign-out", "POST");
+  console.log(response);
+}

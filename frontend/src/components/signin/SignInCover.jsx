@@ -7,7 +7,7 @@ const signInCover = () => {
       <img
         alt="Welcome"
         src={signInBG}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute  inset-0 h-full w-full object-cover"
       />
     </div>
   );

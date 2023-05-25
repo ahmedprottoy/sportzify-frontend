@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 
-import SignUp from "./pages/signUp.jsx";
+import SignUp from "./pages/SignUp.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import SignIn from "./pages/SignIn.jsx";
 

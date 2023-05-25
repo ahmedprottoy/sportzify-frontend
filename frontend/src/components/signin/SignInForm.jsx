@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
+import Button from "../common/Button.jsx";
+import errorImg from "../../assets/error.png";
 
 import signInLogo from "../../assets/signup-logo.png";
 
 const signInForm = (props) => {
+
+   const { userData, handleSubmit, handleChange, isloading, isError, error } = props;
+
     return (
       <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-lg ">
+        <div className=" max-w-xs mx-auto ">
           <img
             alt="login"
             src={signInLogo}
@@ -17,14 +22,25 @@ const signInForm = (props) => {
           </h1>
         </div>
 
-        <form action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto mb-0 mt-8 max-w-md space-y-4"
+        >
           <div>
             <label for="email" className="labelField text-lg">
               Email
             </label>
 
             <div className="relative">
-              <input type="email" className="inputField" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="inputField"
+                autoComplete="off"
+                value={userData.email}
+                onChange={handleChange}
+              />
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <svg
@@ -51,7 +67,15 @@ const signInForm = (props) => {
             </label>
 
             <div className="relative">
-              <input type="password" className="inputField" />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                className="inputField"
+                autoComplete="off"
+                value={userData.password}
+                onChange={handleChange}
+              />
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <svg
@@ -78,7 +102,8 @@ const signInForm = (props) => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex justify-between flex-col gap-3">
+            <Button text="Sign In" disabled={isloading} />
             <p className="mt-4 text-md text-gray-500 sm:mt-0">
               Don't have an account?
               <Link
@@ -89,13 +114,12 @@ const signInForm = (props) => {
               </Link>
               .
             </p>
-
-            <button
-              type="submit"
-              className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
-            >
-              Sign in
-            </button>
+            {isError && (
+              <div className="w-60 md:w-80 p-2 bg-rose-300 rounded-lg flex items-start">
+                <img alt="error" src={errorImg} className="w-5 h-5 mx-4 mt-1" />
+                <p>{error.response.data.message}</p>
+              </div>
+            )}
           </div>
         </form>
       </div>

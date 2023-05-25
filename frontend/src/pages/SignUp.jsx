@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SignUpCover from "../components/signup/SignUpCover.jsx";
 import SignUpForm from "../components/signup/SignUpForm.jsx";
-import signUpReq from "../services/authService.js";
+import {signUpReq} from "../services/authService.js";
 
 function SignUp() {
   const [userData, setUserData] = useState({
@@ -14,14 +14,13 @@ function SignUp() {
     confirmPassword: "",
   });
   const navigate = useNavigate();
-  const signUpMutation = useMutation(signUpReq,{
+  const signUpMutation = useMutation(signUpReq, {
     onSuccess: () => {
       navigate("/");
     },
     // onError: (error) => {
     //   console.log(error.response.data);
     // }
-
   });
 
   const handleSubmit = (e) => {
@@ -44,6 +43,8 @@ function SignUp() {
       [name]: value,
     }));
   };
+
+  
   return (
     <section className="bg-white">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
