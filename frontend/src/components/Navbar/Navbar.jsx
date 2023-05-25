@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { signOutReq } from "../../services/authService";
+import { useMutation } from "react-query";
 import userImage from "../../assets/signup-logo.png";
 import logo from "../../assets/signup-logo.png";
 import NavSearchBox from "./NavSearchBox";
-import { Link, useNavigate } from "react-router-dom";
+import NavButtons from "./NavButtons";
 import NavSideBar from "./NavSideBar";
 import NavOptions from "./NavOptions";
-import NavButtons from "./NavButtons";
-import { signOutReq } from "../../services/authService";
-import { useMutation } from "react-query";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
