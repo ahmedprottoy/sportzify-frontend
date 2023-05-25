@@ -2,16 +2,34 @@ import React, { useState } from "react";
 import userImage from "../../assets/signup-logo.png";
 import logo from "../../assets/signup-logo.png";
 import NavSearchBox from "./NavSearchBox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavSideBar from "./NavSideBar";
+import NavOptions from "./NavOptions";
+import NavButtons from "./NavButtons";
+import { signOutReq } from "../../services/authService";
+import { useMutation } from "react-query";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  console.log(isDropdownOpen);
+  const navigate = useNavigate();
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const signOutMutation = useMutation(signOutReq, {
+    onSuccess: () => {
+      navigate("/sign-in");
+    },
+    // onError: (error) => {
+    //   console.log(error.response.data);
+    // }
+  });
+
+  const signOut = () => {
+    signOutMutation.mutate();
+  };
+
   return (
     <header
       aria-label="Site Header"
@@ -28,35 +46,10 @@ const Navbar = () => {
             </a>
           </div>
 
-          <nav
-            aria-label="Site Nav"
-            className="hidden gap-8 text-sm font-medium md:flex"
-          >
-            <Link className="text-gray-500 text-lg" to="/">
-              Home
-            </Link>
-            <Link className="text-gray-500 text-lg" to="">
-              Write
-            </Link>
-            <Link className="text-gray-500 text-lg" to="">
-              Profile
-            </Link>
-          </nav>
+          <NavOptions />
 
           <div className="hidden flex-1 items-center justify-end gap-4 md:flex relative">
-            {/* <Link
-              className="rounded-lg bg-gray-100 px-5 py-2 text-sm font-medium text-gray-500"
-              to="/sign-in"
-            >
-              Log in
-            </Link>
-
-            <Link
-              className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-medium text-white"
-              to="/sign-up"
-            >
-              Sign up
-            </Link> */}
+            {/* <NavButtons /> */}
 
             <NavSearchBox />
 
@@ -69,12 +62,12 @@ const Navbar = () => {
             </button>
             {isDropdownOpen && (
               <div className="top-12 right-4  bg-gray-200 rounded-lg shadow-lg absolute">
-                <a
-                  href="#"
+                <button
+                  onClick={signOut}
                   className="block px-3 py-1  text-gray-700 border-4 rounded-lg text-sm font-bold border-gray-400  hover:bg-gray-100 "
                 >
-                  Sign Out
-                </a>
+                  {signOutMutation.isLoading ? "Signing Out..." : "Sign Out"}
+                </button>
               </div>
             )}
           </div>

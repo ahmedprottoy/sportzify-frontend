@@ -18,3 +18,4 @@ export const signOutReq = async () => {
   const response = await axiosRequest("v1/auth/sign-out", "POST");
   console.log(response);
 }
+
