@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import SignInForm from "../components/signin/SignInForm";
 import SignInCover from "../components/signin/SignINCover";
 import  {signInReq} from "../services/authService.js";
+import { AuthContext } from "../context/authContext.jsx";
 
 function SignIn() {
-
+ const { setUsername,setImgId,setIsLoggedIn } = useContext(AuthContext);
   const [userData,setUserData] = React.useState({
     email:"",
     password:""
@@ -15,7 +16,10 @@ function SignIn() {
   const navigate = useNavigate();
 
     const signInMutation = useMutation(signInReq, {
-      onSuccess: () => {
+      onSuccess: (data) => {
+        setUsername(data.data.username);
+        setImgId(data.data.imgId),
+        setIsLoggedIn(true);
         navigate("/");
       },
       // onError: (error) => {

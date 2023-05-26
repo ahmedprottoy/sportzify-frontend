@@ -2,10 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
-    fontFamily: {
-      kalam : ['Kalam', 'cursive'],
+    extend: {
+      
     },
+    fontFamily: {
+      kalam: ["Kalam", "cursive"],
+    },
+    
   },
   plugins: [],
 };

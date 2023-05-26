@@ -8,10 +8,6 @@ const signUpForm  = (props) => {
 
     const { userData, handleSubmit, handleChange, isloading, isError,error } = props;
 
-  //  if(error){
-  //    console.log(error.response.data.message);
-  //  }
-
     return (
       <main
         aria-label="Main"

@@ -1,34 +1,15 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { signOutReq } from "../../services/authService";
-import { useMutation } from "react-query";
-import userImage from "../../assets/signup-logo.png";
+import React, { useContext } from "react";
 import logo from "../../assets/signup-logo.png";
 import NavSearchBox from "./NavSearchBox";
 import NavButtons from "./NavButtons";
 import NavSideBar from "./NavSideBar";
 import NavOptions from "./NavOptions";
+import NavUser from "./NavUser";
+
+import { AuthContext } from "../../context/authContext.jsx";
 
 const Navbar = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const handleDropdownToggle = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const signOutMutation = useMutation(signOutReq, {
-    onSuccess: () => {
-      navigate("/sign-in");
-    },
-    // onError: (error) => {
-    //   console.log(error.response.data);
-    // }
-  });
-
-  const signOut = () => {
-    signOutMutation.mutate();
-  };
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <header
@@ -49,26 +30,13 @@ const Navbar = () => {
           <NavOptions />
 
           <div className="hidden flex-1 items-center justify-end gap-4 md:flex relative">
-            {/* <NavButtons /> */}
-
-            <NavSearchBox />
-
-            <button class="block shrink-0" onClick={handleDropdownToggle}>
-              <img
-                alt="Man"
-                src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                class="h-10 w-10 rounded-full object-cover"
-              />
-            </button>
-            {isDropdownOpen && (
-              <div className="top-12 right-4  bg-gray-200 rounded-lg shadow-lg absolute">
-                <button
-                  onClick={signOut}
-                  className="block px-3 py-1  text-gray-700 border-4 rounded-lg text-sm font-bold border-gray-400  hover:bg-gray-100 "
-                >
-                  {signOutMutation.isLoading ? "Signing Out..." : "Sign Out"}
-                </button>
-              </div>
+            {isLoggedIn ? (
+              <>
+                <NavSearchBox />
+                <NavUser />
+              </>
+            ) : (
+              <NavButtons />
             )}
           </div>
 
@@ -76,7 +44,7 @@ const Navbar = () => {
             <button
               className="rounded-lg bg-gray-100 p-2 text-gray-600"
               type="button"
-              onClick={handleDropdownToggle}
+              // onClick={handleDropdownToggle}
             >
               <span className="sr-only">Open menu</span>
               <svg
