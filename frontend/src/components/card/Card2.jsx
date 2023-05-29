@@ -1,13 +1,15 @@
-import React,{useState} from "react";
+import React, { useState, useContext } from "react";
 import Option from '../../assets/menu4.png'
 import CardOption from "./CardOption";
+import {AuthContext} from '../../context/authContext.jsx'
 
 function card2() {
+  const { isLoggedIn } = useContext(AuthContext);
 
   const [toggle,setToggle] = useState(false);
+
   const handleToggle = () => {
     setToggle(!toggle);
-    
   }
 
   return (
@@ -19,15 +21,15 @@ function card2() {
       />
 
       <div href="#" class="relative">
-        <img
-          src={Option}
-          alt="option"
-          class="h-5 absolute top-5 left-2 cursor-pointer "
-          onClick={handleToggle}
-        />
-        {toggle && (
-          <CardOption />
+        {isLoggedIn && (
+          <img
+            src={Option}
+            alt="option"
+            class="h-5 absolute top-5 left-2 cursor-pointer "
+            onClick={handleToggle}
+          />
         )}
+        {toggle && <CardOption />}
         <p class="text-xl font-bold p-3 text-white sm:text-2xl ml-5">
           Tony Wayne
         </p>
@@ -43,7 +45,7 @@ function card2() {
           }}
           class="mt-32 sm:mt-48 lg:mt-64 cursor-pointer "
         >
-          <div class="-translate-y-0 transform transition-all group-hover:-translate-y-28 group-hover:opacity-100 p-2">
+          <div class="-translate-y-0 transform transition-all group-hover:-translate-y-28 group-hover:opacity-100 p-2 duration-500">
             <p class="text-white text-xl mb-3">
               lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>

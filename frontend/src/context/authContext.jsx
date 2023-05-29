@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
 
     if (storedUsername) {
       setUsername(storedUsername);
+      setIsLoggedIn(true);
     }
 
     if (storedImgId) {

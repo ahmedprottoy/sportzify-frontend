@@ -6,7 +6,7 @@ function CardOption() {
       <span class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm absolute top-10 left-5">
         <button
           class="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
-          title="Edit Product"
+          title="Edit"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ function CardOption() {
 
         <button
           class="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative"
-          title="Delete Product"
+          title="Delete"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

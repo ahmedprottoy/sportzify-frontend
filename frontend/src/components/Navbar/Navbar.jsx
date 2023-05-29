@@ -10,13 +10,14 @@ import { AuthContext } from "../../context/authContext.jsx";
 
 const Navbar = () => {
   const { isLoggedIn } = useContext(AuthContext);
+  console.log("navbar")
 
   return (
     <header
       aria-label="Site Header"
       className="shadow-lg sticky top-0 z-10 bg-white"
     >
-      <div className="mx-auto max-w-screen-xl p-4">
+      <div className="mx-auto max-w-screen-xl p-2">
         <div className="flex items-center justify-between gap-4 lg:gap-10">
           <div className="flex lg:w-0 lg:flex-1 flex-row">
             <img src={logo} alt="logo" className="h-16 mr-5" />

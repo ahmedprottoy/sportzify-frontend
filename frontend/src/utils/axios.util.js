@@ -4,12 +4,13 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-const axiosRequest = async (url, method = "GET", data = null) => {
+const axiosRequest = async (url, method = "GET", data = null, headers={}) => {
   try {
     const response = await axiosInstance.request({
       url,
       method,
       data,
+      headers,
     });
 
     return response.data;

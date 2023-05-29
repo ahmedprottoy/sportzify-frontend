@@ -8,7 +8,7 @@ import {AuthContext } from '../context/authContext.jsx'
 
 function SignUp() {
 
- const { setUsername,setIsloggedIn } = useContext(AuthContext);
+ const { setUsername,setIsLoggedIn } = useContext(AuthContext);
   const [userData, setUserData] = useState({
     username: "",
     fullname: "",
@@ -22,7 +22,7 @@ function SignUp() {
   const signUpMutation = useMutation(signUpReq, {
     onSuccess: (data) => {
       setUsername(data.data.username);
-      setIsloggedIn(true);
+      setIsLoggedIn(true);
       navigate("/");
     },
   });

@@ -22,9 +22,6 @@ function SignIn() {
         setIsLoggedIn(true);
         navigate("/");
       },
-      // onError: (error) => {
-      //   console.log(error.response.data);
-      // }
     });
 
   const handleSubmit = (e) => {
@@ -35,7 +32,6 @@ function SignIn() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setUserData((prevUserData) => ({
       ...prevUserData,
       [name]: value,
