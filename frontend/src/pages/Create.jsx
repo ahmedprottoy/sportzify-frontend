@@ -11,9 +11,9 @@ function Create() {
     content: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (value, name) => {
     console.log(name, value);
+
     setBlogData((prevUserData) => ({
       ...prevUserData,
       [name]: value,
@@ -36,6 +36,17 @@ function Create() {
   };
   return (
     <div>
+      <div class="text-center w-1/2 mx-auto flex flex-row justify-between p-2">
+        <label class="text-2xl mt-1 font-bold text-gray-500 tracking-wide">
+          Create Post
+        </label>
+        <button
+          class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          onClick={handleSubmit}
+        >
+          Publish
+        </button>
+      </div>
       <ImageUpload onFileChange={handleFileChange} />
 
       <CreateInput
@@ -43,10 +54,9 @@ function Create() {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-
-      <button onClick={handleSubmit}>post</button>
     </div>
   );
 }
+
 
 export default Create;

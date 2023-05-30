@@ -1,24 +1,26 @@
 import React from "react";
-
-import Card from '../components/card/Card2.jsx'
-import { AuthContext } from "../context/authContext.jsx";
+import {useQuery} from 'react-query';
+import {getBlogsReq} from '../services/blogService.js'
+import Card from "../components/card/Card.jsx";
 
 function HomePage() {
-  const { username } = React.useContext(AuthContext);
+  const { isLoading, isError, data, error } = useQuery("blogs", getBlogsReq);
+
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <div>
-    
-      <div className="container mx-auto">
-        <div className="flex flex-col items-center justify-center">
-          <h1 className="text-4xl font-bold text-gray-800">Home Page</h1>
-          <p className="text-gray-600">Welcome to the home page!</p>
-          <p>{username}</p>
-        </div>
-
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <div className="container mx-auto flex flex-wrap">
+        {data.data.map((blog) => (
+          <Card key={blog.id} blog={blog} />
+        ))}
       </div>
     </div>
   );

@@ -22,11 +22,8 @@ function ImageUpload({ onFileChange }) {
   };
 
   return (
-    <div class="w-full text-center">
+    <div class="w-full">
       <div class="grid grid-cols-1 space-y-2">
-        <label class="text-2xl mt-1 font-bold text-gray-500 tracking-wide">
-          Create Post
-        </label>
         <div class="flex items-center justify-center w-full">
           <label class=" relative flex flex-col rounded-lg border-4 border-dashed w-1/2 h-52 p-10 group text-center justify-center">
             <div class="h-full w-full text-center flex flex-col items-center justify-cente mt-5">
