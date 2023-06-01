@@ -1,48 +1,55 @@
 import React, { useState, useContext } from "react";
-import { useMutation } from "react-query";
+import { useMutation,useQueryClient } from "react-query";
 import { updateUserImageReq } from "../../services/userService.js";
 import { AuthContext } from "../../context/authContext";
+import {  useNavigate } from "react-router-dom";
 
 import Upload from "../../assets/upload.svg";
 
-function UpdateImage() {
-  const { username } = useContext(AuthContext);
+function UpdateImage({ closeModal }) {
+  const { username,setImageUrl } = useContext(AuthContext);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
 
-    const handleImageChange = (event) => {
-      const file = event.target.files[0];
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          setSelectedImage(reader.result);
-        };
-        reader.readAsDataURL(file);
-        handleFileChange(file);
-      }
-    };
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
 
-    const handleFileChange = (file) => {
-        setSelectedFile(file);
-    };
-    
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append("image", selectedFile);
-      updateImageMutation.mutate({formData,username});
-    };
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setSelectedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+      handleFileChange(file);
+    }
+  };
 
-  const updateImageMutation = useMutation((data) =>
-    updateUserImageReq(data.formData, data.username),{
-        onSuccess: () => {
-            console.log("updated");
-        }
+  const handleFileChange = (file) => {
+    setSelectedFile(file);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+    updateImageMutation.mutate({ formData, username });
+  };
+
+  const updateImageMutation = useMutation(
+    (data) => updateUserImageReq(data.formData, data.username),
+    {
+      onSuccess: (data) => {
+        console.log(data)
+        queryClient.invalidateQueries("userData");
+        closeModal();
+        navigate("/profile");
+        
+      },
     }
   );
-
-
 
   return (
     <div className="flex flex-col gap-2 w-full">

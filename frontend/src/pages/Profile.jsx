@@ -7,19 +7,28 @@ import UserImage from "../components/profile/UserImage";
 function Profile() {
   const { username } = useContext(AuthContext);
 
-  const { data, isLoading, isError,error } = useQuery(
+  const { data, isLoading, isError, error } = useQuery(
     "userData",
     () => getUserDataReq(username),
     {
-      onSuccess: (data) => {
-        console.log("User data:", data);
+      enabled: !!username, 
+      onError: (error) => {
+        console.error("User data error:", error);
       },
     }
   );
 
+  if (isLoading ) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+
   return (
     <div>
-      <UserImage />
+      <UserImage imageUrl={data?.imageUrl} />
     </div>
   );
 }
