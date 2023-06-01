@@ -7,7 +7,7 @@ import  {signInReq} from "../services/authService.js";
 import { AuthContext } from "../context/authContext.jsx";
 
 function SignIn() {
- const { setUsername,setImgId,setIsLoggedIn } = useContext(AuthContext);
+ const { setUsername,setImageUrl,setIsLoggedIn } = useContext(AuthContext);
   const [userData,setUserData] = React.useState({
     email:"",
     password:""
@@ -17,8 +17,9 @@ function SignIn() {
 
     const signInMutation = useMutation(signInReq, {
       onSuccess: (data) => {
+        console.log(data)
         setUsername(data.data.username);
-        setImgId(data.data.imgId),
+        setImageUrl(data.data.imageURL),
         setIsLoggedIn(true);
         navigate("/");
       },
