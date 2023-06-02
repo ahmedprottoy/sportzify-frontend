@@ -9,7 +9,7 @@ export const createBlogReq = async (data) => {
   };
 
   const response = await axiosRequest(url, method, data, headers);
-  return response;
+  return response.data;
 };
 
 export const getBlogsReq = async () => {
@@ -17,5 +17,13 @@ export const getBlogsReq = async () => {
   const method = "GET";
  
   const response = await axiosRequest(url, method);
-  return response;
+  return response.data;
+}
+
+export const getBlogReq = async (id) => {
+  const url = `v1/blogs/${id}`;
+  const method = "GET";
+ 
+  const response = await axiosRequest(url, method);
+  return response.data;
 }

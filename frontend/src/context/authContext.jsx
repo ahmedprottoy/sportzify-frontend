@@ -4,39 +4,39 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [username, setUsername] = useState("");
-  const [imgId, setImgId] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [isLoggedIn,setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
-    const storedImgId = localStorage.getItem("imgId");
+    const storedimageUrl = localStorage.getItem("imageUrl");
 
     if (storedUsername) {
       setUsername(storedUsername);
       setIsLoggedIn(true);
     }
 
-    if (storedImgId) {
-      setImgId(storedImgId);
+    if (storedimageUrl) {
+      setImageUrl(storedimageUrl);
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("username", username);
-    localStorage.setItem("imgId", imgId);
-  }, [username, imgId]);
+    localStorage.setItem("imageUrl", imageUrl);
+  }, [username, imageUrl]);
 
   const clearContext = () => {
     setUsername("");
-    setImgId("");
+    setImageUrl("");
     setIsLoggedIn(false);
     localStorage.removeItem("username");
-    localStorage.removeItem("imgId");
+    localStorage.removeItem("imageUrl");
   };
 
   return (
     <AuthContext.Provider
-      value={{ username, imgId, setUsername, setImgId, clearContext,setIsLoggedIn,isLoggedIn }}
+      value={{ username, imageUrl, setUsername, setImageUrl, clearContext,setIsLoggedIn,isLoggedIn }}
     >
       {children}
     </AuthContext.Provider>

@@ -17,8 +17,8 @@ function HomePage() {
 
   return (
     <div>
-      <div className="container mx-auto flex flex-wrap">
-        {data.data.map((blog) => (
+      <div className="container mx-auto flex flex-wrap ">
+        {data.map((blog) => (
           <Card key={blog.id} blog={blog} />
         ))}
       </div>

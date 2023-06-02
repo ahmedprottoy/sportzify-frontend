@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "./context/authContext.jsx";
 
 import SignUp from "./pages/SignUp.jsx";
@@ -9,8 +10,12 @@ import Layout from './pages/layout.jsx'
 import HomePage from "./pages/HomePage.jsx";
 import Create from "./pages/Create.jsx";
 import Profile from "./pages/Profile.jsx";
+import Article from "./pages/Article.jsx";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  staleTime:0,
+  
+});
 
 function App() {
   return (
@@ -24,10 +29,12 @@ function App() {
             <Route path="home" element={<HomePage />} />
             <Route path="create" element={<Create />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="article/:id" element={<Article />} />
           </Route>
-    
         </Routes>
       </AuthProvider>
+
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

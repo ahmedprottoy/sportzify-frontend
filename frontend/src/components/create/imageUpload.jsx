@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Upload from "../../assets/upload.svg";
-import Cancel from "../../assets/close2.png";
+
 
 function ImageUpload({ onFileChange }) {
   const [selectedImage, setSelectedImage] = useState(null);
