@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { AuthContext } from "../context/authContext";
 import { getUserDataReq } from "../services/userService";
 import UserImage from "../components/profile/UserImage";
+import UserInfo from "../components/profile/UserInfo";
 
 function Profile() {
   const { username } = useContext(AuthContext);
@@ -27,8 +28,10 @@ function Profile() {
   }
 
   return (
-    <div>
+    <div className="flex flex-row justify-around">
       <UserImage imageUrl={data?.imageUrl} />
+      <UserInfo username={data?.username} fullname={data?.fullname} email={data?.email}/>
+       
     </div>
   );
 }

@@ -7,10 +7,10 @@ export const getUserDataReq = async (username) => {
   return response.data;
 };
 
-export const updateUserDataReq = async (data) => {
+export const updateUserDataReq = async (data,username) => {
   const url = `v1/users/${username}`;
   const method = "PUT";
-  const response = await axiosRequest(url, method, data, headers);
+  const response = await axiosRequest(url, method, data);
   return response.data;
 };
 

@@ -12,7 +12,10 @@ import Create from "./pages/Create.jsx";
 import Profile from "./pages/Profile.jsx";
 import Article from "./pages/Article.jsx";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  staleTime:0,
+  
+});
 
 function App() {
   return (

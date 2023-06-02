@@ -15,7 +15,7 @@ function UserImage(data) {
   };
 
   return (
-    <div className="flex flex-col items-center p-5">
+    <div className="flex flex-col items-center p-5 w-1/2">
       <img
         src={imageUrl}
         alt="Avatar"

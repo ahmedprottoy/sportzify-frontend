@@ -42,9 +42,9 @@ function UpdateImage({ closeModal }) {
     (data) => updateUserImageReq(data.formData, data.username),
     {
       onSuccess: (data) => {
-        console.log(data)
         queryClient.invalidateQueries("userData");
         closeModal();
+        setImageUrl(data.imageUrl);
         navigate("/profile");
         
       },
