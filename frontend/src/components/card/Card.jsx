@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/authContext.jsx";
 import { Link } from "react-router-dom";
 
 function card({ blog }) {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { username } = useContext(AuthContext);
 
   const [toggle, setToggle] = useState(false);
 
@@ -24,7 +24,7 @@ function card({ blog }) {
       <div class="absolute z-0 bg-gradient-to-t from-black to-transparent inset-0" />
 
       <div class="relative">
-        {isLoggedIn && (
+        {username === blog.author && (
           <img
             src={Option}
             alt="option"
@@ -43,11 +43,7 @@ function card({ blog }) {
         </div>
       </div>
 
-      <Link
-        to={`/article/${blog.id}`}
-        class="cursor-pointer"
-       
-      >
+      <Link to={`/article/${blog.id}`} class="cursor-pointer">
         <div class="absolute  top-48 opacity-0 px-2 py-4 translate-y-0  transform transition-all group-hover:translate-y-20 ease-in group-hover:opacity-100 duration-300">
           <p
             className="text-sm text-gray-300 line-clamp-4 "

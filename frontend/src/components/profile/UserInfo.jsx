@@ -14,7 +14,7 @@ function UserInfo({username, fullname, email}) {
     }
     
   return (
-    <div className="flex flex-col gap-3 p-5  w-1/2">
+    <div className="flex flex-col gap-3 p-5  w-full">
       <div className="flex flex-row gap-5 lg:mt-12">
         <p className="text-4xl font-semibold ">My Profile</p>
         <button onClick={handleUpdateInfo}>
