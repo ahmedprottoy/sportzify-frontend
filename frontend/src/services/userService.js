@@ -14,7 +14,7 @@ export const updateUserDataReq = async (data,username) => {
   return response.data;
 };
 
-export const updatePasswordReq = async (data) => {
+export const updatePasswordReq = async (data,username) => {
   const url = `v1/users/password/${username}`;
   const method = "PUT";
   const response = await axiosRequest(url, method, data);
