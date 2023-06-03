@@ -27,3 +27,22 @@ export const getBlogReq = async (id) => {
   const response = await axiosRequest(url, method);
   return response.data;
 }
+
+
+export const deleteBlogReq = async (id) => {
+  const url = `v1/blogs/${id}`;
+  const method = "DELETE";
+ 
+  const response = await axiosRequest(url, method);
+  return response.data;
+}
+
+export const updateBlogReq = async (data, id) => {
+  const url = `v1/blogs/${id}`;
+  const method = "PUT";
+  const headers = {
+    "Content-Type": "multipart/form-data",
+  };
+  const response = await axiosRequest(url, method, data, headers);
+  return response.data;
+}

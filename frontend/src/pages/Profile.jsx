@@ -1,11 +1,12 @@
 import React, { useState,useContext } from "react";
 import { useQuery } from "react-query";
 import { AuthContext } from "../context/authContext";
-import { getUserDataReq } from "../services/userService";
+import { getUserDataReq, getUserBlogReq } from "../services/userService";
 import Modal from "../components/common/Modal";
 import UserImage from "../components/profile/UserImage";
 import UserInfo from "../components/profile/UserInfo";
 import UpdatePassword from "../components/profile/UpdatePassword";
+import UserBlogs from "../components/profile/UserBlogs";
 
 function Profile() {
   const { username } = useContext(AuthContext);
@@ -21,7 +22,7 @@ function Profile() {
 
 
 
-  const { data, isLoading, isError, error } = useQuery(
+  const { data:userData, isLoading:userDataLoading, isError:userDataIsError, error:userDataError } = useQuery(
     "userData",
     () => getUserDataReq(username),
     {
@@ -32,33 +33,54 @@ function Profile() {
     }
   );
 
-  if (isLoading ) {
+  const {
+    data: userBlogs,
+    isLoading: userBlogsLoading,
+    isError: userBlogsIsError,
+    error: userBlogsError,
+  } = useQuery("userBlogs", () => getUserBlogReq(username), {
+    enabled: !!username,
+    onError: (error) => {
+      console.error("User blogs error:", error);
+    },
+  });
+
+  if (userDataLoading || userBlogsLoading ) {
     return <h1>Loading...</h1>;
   }
 
-  if (isError) {
-    return <h1>{error.message}</h1>;
+  if (userDataIsError || userBlogsIsError) {
+    return <h1>Error: {userDataError.message || userBlogsError}</h1>;
   }
 
   return (
-    <div className="flex flex-row">
-      <UserImage imageUrl={data?.imageUrl} />
+    <div>
+      <div className="flex flex-row">
+        <UserImage imageUrl={userData?.imageUrl} />
 
-      <div className="flex flex-col w-1/2">
-        <UserInfo
-          username={data?.username}
-          fullname={data?.fullname}
-          email={data?.email}
-        />
-        <button onClick={handleUpdatePassword} className="w-40 p-2 rounded-lg mt-10 mx-5 bg-gray-300">Change Password</button>
-
-        {isModalOpen && (
-          <Modal
-            closeModal={closeModal}
-            content={<UpdatePassword closeModal={closeModal} />}
+        <div className="flex flex-col w-1/2">
+          <UserInfo
+            username={userData?.username}
+            fullname={userData?.fullname}
+            email={userData?.email}
           />
-        )}
+          <button
+            onClick={handleUpdatePassword}
+            className="w-40 p-2 rounded-lg mt-10 mx-5 bg-gray-300"
+          >
+            Change Password
+          </button>
+
+          {isModalOpen && (
+            <Modal
+              closeModal={closeModal}
+              content={<UpdatePassword closeModal={closeModal} />}
+            />
+          )}
+        </div>
       </div>
+
+      <UserBlogs userBlogs={userBlogs}/>
     </div>
   );
 }

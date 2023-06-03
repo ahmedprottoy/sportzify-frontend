@@ -35,6 +35,10 @@ function UpdatePassword({closeModal}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if(userData.newPassword !== userData.confirmPassword){
+          console.log("Password not matched");
+          return;
+        }
         updatePasswordMutation.mutate({userData,username});
     }
 

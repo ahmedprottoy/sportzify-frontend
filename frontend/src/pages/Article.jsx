@@ -7,7 +7,6 @@ import Date from '../assets/calendar.png'
 function Article() {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useBlogData(id);
-  console.log(data);
 
   if (isLoading) return <div>Loading...</div>;
 
