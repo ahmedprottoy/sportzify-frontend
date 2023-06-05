@@ -43,6 +43,10 @@ function Profile() {
     onError: (error) => {
       console.error("User blogs error:", error);
     },
+    onSuccess: (data) => {
+      // console.log("User blogs:", data);
+    }
+
   });
 
   if (userDataLoading || userBlogsLoading ) {

@@ -1,21 +1,28 @@
-import React from "react";
-import { useMutation } from "react-query";
-import { deleteBlogReq } from "../../services/blogService.js";
+import React,{useState} from "react";
+import { useNavigate } from "react-router-dom";
+
+import BlogDelete from "./BlogDelete.jsx";  
+import BlogUpdate from "./BlogUpdate.jsx";
+import Modal from '../common/Modal.jsx'
 
 function CardOption({ blogId }) {
-  const deleteBlogMutation = useMutation(deleteBlogReq, {
-    onSuccess: (data) => {
-      console.log(data);
-    },
-  });
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
 
-  const handleEdit = () => {
-    console.log(blogId);
-  };
+  const handleDelete=()=>{
+    setModalContent(<BlogDelete blogId={blogId} closeModal={closeModal} />)
+    setIsModalOpen(true)
+  }
 
-  const handleDelete = () => {
-    deleteBlogMutation.mutate(blogId);
-  };
+  const handleUpdate = ()=>{
+   navigate(`/article/update/${blogId}`);
+  }
+
+  const closeModal = ()=>{
+    setIsModalOpen(false)
+    setModalContent(null);
+  }
 
   return (
     <div>
@@ -23,7 +30,7 @@ function CardOption({ blogId }) {
         <button
           class="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
           title="Edit"
-          onClick={handleEdit}
+          onClick={handleUpdate}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -62,6 +69,11 @@ function CardOption({ blogId }) {
           </svg>
         </button>
       </span>
+
+      {isModalOpen && (
+        <Modal content={modalContent} closeModal={closeModal}/>
+        
+      )}
     </div>
   );
 }

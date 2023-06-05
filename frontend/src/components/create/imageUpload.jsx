@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Upload from "../../assets/upload.svg";
 
 
-function ImageUpload({ onFileChange }) {
+
+function ImageUpload({ onFileChange,image }) {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageChange = (event) => {
@@ -37,9 +37,9 @@ function ImageUpload({ onFileChange }) {
                     />
                   </div>
                 ) : (
-                  <object
+                  <img
                     class="has-mask h-36 object-center"
-                    data={Upload}
+                    src={image}
                     type="image/svg+xml"
                   />
                 )}

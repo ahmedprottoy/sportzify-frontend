@@ -4,6 +4,7 @@ import { useMutation } from "react-query";
 import { createBlogReq } from "../services/blogService";
 import ImageUpload from "../components/create/imageUpload";
 import CreateInput from "../components/create/CreateInput";
+import Upload from '../assets/upload.svg';
 function Create() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [blogData, setBlogData] = useState({
@@ -47,12 +48,14 @@ function Create() {
           Publish
         </button>
       </div>
-      <ImageUpload onFileChange={handleFileChange} />
+      <ImageUpload onFileChange={handleFileChange} image={Upload}/>
 
       <CreateInput
         blogData={blogData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        title="New Post Title Here..."
+        content="New Post Content Here..."
       />
     </div>
   );

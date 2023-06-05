@@ -11,6 +11,7 @@ import HomePage from "./pages/HomePage.jsx";
 import Create from "./pages/Create.jsx";
 import Profile from "./pages/Profile.jsx";
 import Article from "./pages/Article.jsx";
+import BlogUpdate from "./components/card/BlogUpdate.jsx";
 
 const queryClient = new QueryClient({
   staleTime:0,
@@ -30,6 +31,7 @@ function App() {
             <Route path="create" element={<Create />} />
             <Route path="profile" element={<Profile />} />
             <Route path="article/:id" element={<Article />} />
+            <Route path="article/update/:id" element={<BlogUpdate />} />
           </Route>
         </Routes>
       </AuthProvider>
