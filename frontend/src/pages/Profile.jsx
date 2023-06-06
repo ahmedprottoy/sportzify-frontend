@@ -2,23 +2,16 @@ import React, { useState,useContext } from "react";
 import { useQuery } from "react-query";
 import { AuthContext } from "../context/authContext";
 import { getUserDataReq, getUserBlogReq } from "../services/userService";
-import Modal from "../components/common/Modal";
 import UserImage from "../components/profile/UserImage";
 import UserInfo from "../components/profile/UserInfo";
-import UpdatePassword from "../components/profile/UpdatePassword";
+import ProfileBackground from '../assets/pro-back.jpg'
 import UserBlogs from "../components/profile/UserBlogs";
+import Cloud from "../assets/pro-bg.jpg";
+import ProfileButton from "../components/profile/ProfileButton";
 
 function Profile() {
   const { username } = useContext(AuthContext);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleUpdatePassword = () => {
-      setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-      setIsModalOpen(false);
-    };
 
 
 
@@ -58,35 +51,34 @@ function Profile() {
   }
 
   return (
-    <div>
-      <div className="flex flex-row">
-        <UserImage imageUrl={userData?.imageUrl} />
-
-        <div className="flex flex-col w-1/2">
-          <UserInfo
-            username={userData?.username}
-            fullname={userData?.fullname}
-            email={userData?.email}
-          />
-          <button
-            onClick={handleUpdatePassword}
-            className="w-40 p-2 rounded-lg mt-10 mx-5 bg-gray-300"
-          >
-            Change Password
-          </button>
-
-          {isModalOpen && (
-            <Modal
-              closeModal={closeModal}
-              content={<UpdatePassword closeModal={closeModal} />}
-            />
-          )}
-        </div>
+    <div className=" bg-slate-100 ">
+      <div>
+        {/* <object className="w-full h-[37vh] object-cover" data={Upload} type="image/svg+xml"/> */}
+        <img src={ProfileBackground} alt="bg" className="h-[40vh] w-full object-cover " />
       </div>
 
-      <UserBlogs userBlogs={userBlogs}/>
+      <div className="w-[70%] bg-white rounded-lg shadow-lg p-4 mx-auto  mt-5 relative">
+        <UserImage imageUrl={userData?.imageUrl} />
+
+        <ProfileButton />
+
+        <UserInfo
+          username={userData?.username}
+          fullname={userData?.fullname}
+          email={userData?.email}
+        />
+
+        <hr className="border-1 border-solid border-x-slate-400 w-full my-5"/>
+      </div>
+
+      <div className="w-[70%] bg-white rounded-lg shadow-lg p-4 mx-auto  mt-5 relative">
+        <UserBlogs userBlogs={userBlogs} />
+      </div>
     </div>
   );
 }
 
 export default Profile;
+
+
+     

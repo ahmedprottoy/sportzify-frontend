@@ -2,6 +2,9 @@ import React,{useState} from "react";
 import Modal from "../common/Modal.jsx";
 import UpdateInfo from "./UpdateInfo.jsx";
 import Edit from '../../assets/edit.png'
+import Author from "../../assets/writer.png";
+import Email from "../../assets/email.png";
+
 function UserInfo({username, fullname, email}) {
     const[isModalOpen, setIsModalOpen] = useState(false);
 
@@ -14,33 +17,28 @@ function UserInfo({username, fullname, email}) {
     }
     
   return (
-    <div className="flex flex-col gap-3 p-5  w-full">
-      <div className="flex flex-row gap-5 lg:mt-12">
-        <p className="text-4xl font-semibold ">My Profile</p>
-        <button onClick={handleUpdateInfo}>
-          <img src={Edit} alt="edit" className="h-6 mt-2" />
-        </button>
+    <div>
+      <div className="mt-20 mx-auto w-[50%] items-center flex flex-col gap-5">
+        <div className="flex flex-row gap-5 relative">
+          <p className="text-4xl font-semibold">{fullname}</p>
+          <button title="Update Information" onClick={handleUpdateInfo}>
+            <img src={Edit} alt="edit" className="h-6 mt-2 absolute -top-5" />
+          </button>
+        </div>
+        <div class="flex flex-row gap-2">
+          <img src={Author} alt="author" class="h-5" />
+          <p class="text-base font-base text-gray-400"> {username}</p>
+        </div>
+        <div class="flex flex-row gap-2">
+          <img src={Email} alt="author" class="h-5" />
+          <p class="text-base font-base text-gray-400"> {email}</p>
+        </div>
       </div>
-      <p className="mt-10">
-        <span className="text-2xl font-semibold mr-4">Username:</span>
-        {"  "}
-        <span className="text-xl">{username}</span>
-      </p>
-      <p>
-        <span className="text-2xl font-semibold mr-4">Full Name:</span>
-        {"  "}
-        <span className="text-xl">{fullname}</span>
-      </p>
-      <p>
-        <span className="text-2xl font-semibold mr-4">Email:</span>
-        {"  "}
-        <span className="text-xl">{email}</span>
-      </p>
 
       {isModalOpen && (
         <Modal
-            closeModal={closeModal}
-            content={<UpdateInfo closeModal={closeModal} />}
+          closeModal={closeModal}
+          content={<UpdateInfo closeModal={closeModal} />}
         />
       )}
     </div>

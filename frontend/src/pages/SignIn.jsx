@@ -21,7 +21,7 @@ function SignIn() {
         setUsername(data.data.username);
         setImageUrl(data.data.imageURL),
         setIsLoggedIn(true);
-        navigate("/");
+        navigate("/home");
       },
     });
 

@@ -46,7 +46,7 @@ function UpdatePassword({closeModal}) {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="mx-auto  mt-8 max-w-md space-y-4"
+        className="mx-auto max-w-md space-y-4"
       >
         <div>
           <label for="password" className="labelField text-lg">

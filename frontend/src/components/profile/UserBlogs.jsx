@@ -8,7 +8,7 @@ function UserBlogs({ userBlogs}) {
   
   return (
     <div>
-      <div className="container mx-auto flex flex-wrap ">
+      <div className="container mx-auto flex flex-wrap justify-evenly ">
         {userBlogs.map((blog) => (
           <Card key={blog.id} blog={blog} />
         ))}

@@ -4,37 +4,14 @@ import UpdateImage from "./UpdateImage.jsx";
 
 function UserImage(data) {
   const {imageUrl} = data;
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleUpdateImage = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
   return (
-    <div className="flex flex-col items-center p-5 w-1/2">
+    <div className="w-52 h-52 rounded-full bg-slate-100 border-4 border-slate-200 absolute -top-24 left-0 right-0 m-auto">
       <img
         src={imageUrl}
-        alt="Avatar"
-        className="rounded-full object-cover h-80 w-80 border-4 border-double border-gray-800"
+        alt="cf"
+        className="w-full h-full object-cover rounded-full"
       />
-
-      <button
-        className="my-5 p-3 rounded-lg bg-gray-300"
-        onClick={handleUpdateImage}
-      >
-        Update Image
-      </button>
-
-      {isModalOpen && (
-        <Modal
-          closeModal={closeModal}
-          content={<UpdateImage closeModal={closeModal} />}
-        />
-      )}
     </div>
   );
 }
