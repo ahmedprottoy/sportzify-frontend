@@ -4,6 +4,8 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "./context/authContext.jsx";
 
+import LoaderOverlay from "./components/common/LoaderOverlay.jsx";
+
 import SignUp from "./pages/SignUp.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import Layout from './pages/layout.jsx'
@@ -31,13 +33,14 @@ function App() {
             <Route path="home" element={<HomePage />} />
             <Route path="create" element={<Create />} />
             <Route path="profile" element={<Profile />} />
-           
+
             <Route path="article/:id" element={<Article />} />
             <Route path="article/update/:id" element={<BlogUpdate />} />
           </Route>
         </Routes>
       </AuthProvider>
-
+      
+      <LoaderOverlay />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

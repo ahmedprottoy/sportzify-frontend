@@ -42,13 +42,13 @@ function Profile() {
 
   });
 
-  if (userDataLoading || userBlogsLoading ) {
-    return <h1>Loading...</h1>;
-  }
+  // if (userDataLoading || userBlogsLoading ) {
+  //   return <h1>Loading...</h1>;
+  // }
 
-  if (userDataIsError || userBlogsIsError) {
-    return <h1>Error: {userDataError.message || userBlogsError}</h1>;
-  }
+  // if (userDataIsError || userBlogsIsError) {
+  //   return <h1>Error: {userDataError.message || userBlogsError}</h1>;
+  // }
 
   return (
     <div className=" bg-slate-100 ">
