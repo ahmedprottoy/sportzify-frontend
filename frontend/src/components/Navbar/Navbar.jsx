@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/authContext.jsx";
 
 const Navbar = () => {
   const { isLoggedIn } = useContext(AuthContext);
-  console.log("navbar")
+
 
   return (
     <header

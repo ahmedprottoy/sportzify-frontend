@@ -8,12 +8,12 @@ import ProfileBackground from '../assets/pro-back.jpg'
 import UserBlogs from "../components/profile/UserBlogs";
 import Cloud from "../assets/pro-bg.jpg";
 import ProfileButton from "../components/profile/ProfileButton";
+import { useParams } from "react-router-dom";
 
 function Profile() {
-  const { username } = useContext(AuthContext);
 
-
-
+const { username } = useContext(AuthContext);
+  
 
   const { data:userData, isLoading:userDataLoading, isError:userDataIsError, error:userDataError } = useQuery(
     "userData",
@@ -42,13 +42,6 @@ function Profile() {
 
   });
 
-  // if (userDataLoading || userBlogsLoading ) {
-  //   return <h1>Loading...</h1>;
-  // }
-
-  // if (userDataIsError || userBlogsIsError) {
-  //   return <h1>Error: {userDataError.message || userBlogsError}</h1>;
-  // }
 
   return (
     <div className=" bg-slate-100 ">

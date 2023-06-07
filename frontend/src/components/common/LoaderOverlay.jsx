@@ -1,6 +1,6 @@
 import { useIsFetching, useIsMutating } from "react-query";
 
-import loadingIcon from "../../assets/loader.svg";
+import loadingIcon from "../../assets/loading.svg";
 
 const LoaderOverlay = () => {
   const isFetching = useIsFetching();
