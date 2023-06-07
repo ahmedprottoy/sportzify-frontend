@@ -60,7 +60,7 @@ function BlogDelete({ blogId, closeModal }) {
           >
             Delete
           </button>
-          <button className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md mx-10">
+          <button className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md mx-10" onClick={closeModal}>
             Cancel
           </button>
         </div>

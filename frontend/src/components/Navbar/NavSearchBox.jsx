@@ -1,6 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {getUserDataReq} from '../../services/userService.js'
+import { useQuery } from 'react-query';
+import SearchedUser from './SearchedUser.jsx';
+import Modal from '../common/Modal.jsx';
 
 function NavSearchBox() {
+
+const [searchUser, setSearchUser] = useState('')
+const [isModalOpen, setIsModalOpen] = useState(false);
+ const [modalContent, setModalContent] = useState(null);
+
+
+const {data, error, isLoading,refetch} = useQuery(['searchUser', searchUser], () => getUserDataReq(searchUser),{
+ enabled: false,
+ onSuccess: (data) => {
+    setIsModalOpen(true);
+    setModalContent(<SearchedUser data={data} closeModal={closeModal} />);
+  }
+});
+const closeModal = () =>
+{
+  setIsModalOpen(false);
+}
+
+
+
   return (
     <div class="relative">
       <label class="sr-only" for="search">
@@ -13,13 +37,15 @@ function NavSearchBox() {
         id="search"
         type="search"
         placeholder="Search..."
-        autoComplete='off'
-        
+        autoComplete="off"
+        value={searchUser}
+        onChange={(e) => setSearchUser(e.target.value)}
       />
 
       <button
         type="button"
         class="absolute end-1 top-1/2 -translate-y-1/2 rounded-full bg-gray-50 p-2 text-gray-600 transition hover:text-gray-700"
+        onClick={refetch}
       >
         <span class="sr-only">Search</span>
         <svg
@@ -37,6 +63,10 @@ function NavSearchBox() {
           />
         </svg>
       </button>
+
+      {
+        isModalOpen && <Modal content={modalContent} closeModal={closeModal} />
+      }
     </div>
   );
 }

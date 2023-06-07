@@ -32,7 +32,7 @@ function card({ blog }) {
             onClick={handleToggle}
           />
         )}
-        {toggle && <CardOption blogId={blog.id} />}
+        {toggle && <CardOption blogId={blog.id} onClose={()=>setToggle(false)}/>}
         <p class="text-xl font-bold p-3 text-white sm:text-2xl ml-5">
           {blog.author}
         </p>

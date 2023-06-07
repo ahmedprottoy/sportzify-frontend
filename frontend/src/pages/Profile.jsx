@@ -1,10 +1,9 @@
-import React, { useState,useContext } from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "react-query";
-import { AuthContext } from "../context/authContext";
 import { getUserDataReq, getUserBlogReq } from "../services/userService";
 import UserImage from "../components/profile/UserImage";
 import UserInfo from "../components/profile/UserInfo";
-import ProfileBackground from '../assets/pro-back.jpg'
+import ProfileBackground from '../assets/profile-back.svg'
 import UserBlogs from "../components/profile/UserBlogs";
 import Cloud from "../assets/pro-bg.jpg";
 import ProfileButton from "../components/profile/ProfileButton";
@@ -12,10 +11,10 @@ import { useParams } from "react-router-dom";
 
 function Profile() {
 
-const { username } = useContext(AuthContext);
+const { username } = useParams();
   
 
-  const { data:userData, isLoading:userDataLoading, isError:userDataIsError, error:userDataError } = useQuery(
+  const { data:userData, isLoading:userDataLoading, isError:userDataIsError, error:userDataError, refetch } = useQuery(
     "userData",
     () => getUserDataReq(username),
     {
@@ -25,6 +24,11 @@ const { username } = useContext(AuthContext);
       },
     }
   );
+
+  useEffect(() => {
+    refetch();
+  }, [username]);
+
 
   const {
     data: userBlogs,
@@ -44,13 +48,13 @@ const { username } = useContext(AuthContext);
 
 
   return (
-    <div className=" bg-slate-100 ">
+    <div>
       <div>
         {/* <object className="w-full h-[37vh] object-cover" data={Upload} type="image/svg+xml"/> */}
         <img src={ProfileBackground} alt="bg" className="h-[40vh] w-full object-cover " />
       </div>
 
-      <div className="w-[70%] bg-white rounded-lg shadow-lg p-4 mx-auto  mt-5 relative">
+      <div className="w-[70%] bg-white rounded-lg shadow-2xl p-4 mx-auto  -mt-20 relative">
         <UserImage imageUrl={userData?.imageUrl} />
 
         <ProfileButton />
@@ -64,7 +68,7 @@ const { username } = useContext(AuthContext);
         <hr className="border-1 border-solid border-x-slate-400 w-full my-5"/>
       </div>
 
-      <div className="w-[70%] bg-white rounded-lg shadow-lg p-4 mx-auto  mt-5 relative">
+      <div className="w-[70%] bg-white rounded-lg shadow-2xl p-4 mx-auto  my-5 relative ">
         <UserBlogs userBlogs={userBlogs} />
       </div>
     </div>
