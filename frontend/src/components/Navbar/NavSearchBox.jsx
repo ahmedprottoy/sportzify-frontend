@@ -3,6 +3,7 @@ import {getUserDataReq} from '../../services/userService.js'
 import { useQuery } from 'react-query';
 import SearchedUser from './SearchedUser.jsx';
 import Modal from '../common/Modal.jsx';
+import NotFound from './NotFound.jsx';
 
 function NavSearchBox() {
 
@@ -11,18 +12,24 @@ const [isModalOpen, setIsModalOpen] = useState(false);
  const [modalContent, setModalContent] = useState(null);
 
 
-const {data, error, isLoading,refetch} = useQuery(['searchUser', searchUser], () => getUserDataReq(searchUser),{
+const {data,isError, error, isLoading,refetch} = useQuery(['searchUser', searchUser], () => getUserDataReq(searchUser),{
  enabled: false,
  onSuccess: (data) => {
     setIsModalOpen(true);
     setModalContent(<SearchedUser data={data} closeModal={closeModal} />);
     setSearchUser('');
+  },
+  onError: (error) => {
+        setIsModalOpen(true);
+    setModalContent(<NotFound closeModal={closeModal} />);setSearchUser("");
   }
 });
 const closeModal = () =>
 {
   setIsModalOpen(false);
 }
+
+
 
 
 
