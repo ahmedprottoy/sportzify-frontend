@@ -17,9 +17,15 @@ import Article from "./pages/Article.jsx";
 import BlogUpdate from "./components/card/BlogUpdate.jsx";
 
 const queryClient = new QueryClient({
-  staleTime:0,
-  
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      // retry: false,
+    },
+  },
 });
+
+
 
 function App() {
   return (

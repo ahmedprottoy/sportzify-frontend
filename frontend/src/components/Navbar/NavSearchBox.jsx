@@ -16,6 +16,7 @@ const {data, error, isLoading,refetch} = useQuery(['searchUser', searchUser], ()
  onSuccess: (data) => {
     setIsModalOpen(true);
     setModalContent(<SearchedUser data={data} closeModal={closeModal} />);
+    setSearchUser('');
   }
 });
 const closeModal = () =>

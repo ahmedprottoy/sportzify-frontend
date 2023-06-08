@@ -25,7 +25,7 @@ export const getUserBlogReq = async (username) => {
   const url = `v1/users/blogs/${username}`;
   const method = "GET";
   const response = await axiosRequest(url, method);
-  return response.data;
+  return response;
 };
 
 export const updateUserImageReq = async (data, username) => {
