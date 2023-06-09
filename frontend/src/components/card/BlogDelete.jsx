@@ -23,7 +23,7 @@ function BlogDelete({ blogId, closeModal }) {
     onSuccess: (data) => {
       queryClient.invalidateQueries("userBlogs");
       closeModal();
-      navigate("/profile");
+      navigate("/home");
     },
   });
 

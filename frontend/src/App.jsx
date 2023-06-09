@@ -15,6 +15,7 @@ import Profile from "./pages/Profile.jsx";
 
 import Article from "./pages/Article.jsx";
 import BlogUpdate from "./components/card/BlogUpdate.jsx";
+import ErrorNotFound from "./pages/ErrorNotFound.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,6 +43,7 @@ function App() {
 
             <Route path="article/:id" element={<Article />} />
             <Route path="article/update/:id" element={<BlogUpdate />} />
+            <Route path="*" element={<ErrorNotFound />} /> 
           </Route>
         </Routes>
       </AuthProvider>

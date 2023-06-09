@@ -23,7 +23,7 @@ function SignUp() {
     onSuccess: (data) => {
       setUsername(data.data.username);
       setIsLoggedIn(true);
-      navigate("/");
+      navigate("/home");
     },
   });
 

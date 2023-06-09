@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { signOutReq } from "../../services/authService";
 import { useMutation } from "react-query";
 import ProfileLogo from '../../assets/profile.png'
-import SignOutLogo  from '../../assets/arrow.png'
+import SignOutLogo  from '../../assets/logout.png'
 import { AuthContext } from "../../context/authContext";
+import NoImage from "../../assets/NoImage.jpg";
+import ButtonUI from '../common/ButtonUI';
 
 function NavUser() {
 const {username,imageUrl,clearContext} = useContext(AuthContext);
@@ -34,11 +36,19 @@ const {username,imageUrl,clearContext} = useContext(AuthContext);
         }`}
         onClick={handleDropdownToggle}
       >
-        <img
-          alt="Man"
-          src={imageUrl}
-          class="h-10 w-10 rounded-full object-cover"
-        />
+        {imageUrl ? (
+          <img
+            alt="Man"
+            src={imageUrl}
+            class="h-10 w-10 rounded-full object-cover"
+          />
+        ) : (
+          <img
+            alt="Man"
+            src={NoImage}
+            class="h-10 w-10 rounded-full object-cover"
+          />
+        )}
       </button>
       {isDropdownOpen && (
         <div className="absolute bg-gray-100  p-2 flex flex-col gap-2 right-4 top-12 shadow-lg rounded-lg items-center">
@@ -47,13 +57,22 @@ const {username,imageUrl,clearContext} = useContext(AuthContext);
             <p className="p-1">{username}</p>
           </div>
           <hr className="border-1 w-36 border-gray-700" />
-          <button
+          {/* <button
             onClick={signOut}
             className="p-1 flex flex-row items-center  w-36  rounded-md bg-cyan-600 border-2 border-gray-700"
           >
             <img src={SignOutLogo} alt="Logo" className="h-6 w-6" />
             {signOutMutation.isLoading ? "Signing Out..." : "Sign Out"}
-          </button>
+          </button> */}
+
+          <ButtonUI
+            text="Sign Out"
+            onClick={() => {
+              signOut();
+            }}
+            Icon={SignOutLogo}
+            className={"w-full"}
+          />
         </div>
       )}
     </div>

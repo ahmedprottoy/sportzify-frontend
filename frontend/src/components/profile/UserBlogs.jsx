@@ -3,7 +3,7 @@ import Card from '../card/Card.jsx'
 
 function UserBlogs({ userBlogs}) {
     if (!userBlogs) {
-      return <div>Loading....</div>;
+      return <div>....</div>;
     }
   
   return (

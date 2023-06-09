@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
-
 import { createBlogReq } from "../services/blogService";
 import ImageUpload from "../components/create/imageUpload";
 import CreateInput from "../components/create/CreateInput";
-import Upload from '../assets/upload.svg';
+import Upload from "../assets/upload.svg";
+import ButtonUI from "../components/common/ButtonUI";
+import Publish from "../assets/publish.png";
+
+import { useNavigate } from "react-router-dom";
 function Create() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [blogData, setBlogData] = useState({
     title: "",
     content: "",
   });
+  const navigate=useNavigate();
 
   const handleChange = (value, name) => {
     console.log(name, value);
@@ -25,7 +29,11 @@ function Create() {
     setSelectedFile(file);
   };
 
-  const createBlogMutation = useMutation(createBlogReq);
+  const createBlogMutation = useMutation((data) => createBlogReq(data), {
+    onSuccess: (data) => {
+      navigate(`/article/${data.id}`);
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,18 +45,18 @@ function Create() {
   };
   return (
     <div>
-      <div class="text-center w-1/2 mx-auto flex flex-row justify-between p-2">
-        <label class="text-2xl mt-1 font-bold text-gray-500 tracking-wide">
+      <div class="text-center w-1/2 mx-auto flex flex-row justify-between p-2 my-5">
+        <label class="text-4xl mt-1 font-bold text-gray-500 tracking-wide">
           Create Post
         </label>
-        <button
-          class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+
+        <ButtonUI
+          text="Publish"
           onClick={handleSubmit}
-        >
-          Publish
-        </button>
+          Icon={Publish}
+        />
       </div>
-      <ImageUpload onFileChange={handleFileChange} image={Upload}/>
+      <ImageUpload onFileChange={handleFileChange} image={Upload} />
 
       <CreateInput
         blogData={blogData}
@@ -60,6 +68,5 @@ function Create() {
     </div>
   );
 }
-
 
 export default Create;

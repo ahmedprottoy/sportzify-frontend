@@ -3,10 +3,11 @@ import Modal from "../common/Modal.jsx";
 import UpdateImage from "./UpdateImage";
 import UpdatePassword from "./UpdatePassword";
 import UpdateInfo from "./UpdateInfo";
-import Edit from "../../assets/edit-button.png";
+import Edit from "../../assets/edit-profile.png";
 import Image from "../../assets/edit-image.png";
 import Password from "../../assets/edit-password.png";
 import Info from "../../assets/edit-info.png";
+import ButtonUI from "../common/ButtonUI.jsx";
 
 function ProfileButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,28 +48,27 @@ function ProfileButton() {
   };
 
   return (
-    <div class='absolute top-10 right-10'>
+    <div class="absolute top-10 right-10">
       <div class="relative inline-block text-left">
         <div>
-          <button
-            type="button"
-            class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          
+
+          <ButtonUI
+            text="Edit Profile"
             onClick={() => {
               setIsToggle(!isToggle);
             }}
-          >
-            <img src={Edit} alt="edit" class="h-5 w-5" />
-            Edit Profile
-          </button>
+            Icon={Edit}
+            className={isToggle ? 'bg-gray-800' : ''}
+          />
         </div>
 
         {isToggle && (
           <div
             class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-            ref = {optionsRef}
+            ref={optionsRef}
           >
             <div class="py-1" role="none">
-              
               <button
                 href="#"
                 class="text-gray-700 px-4 py-2 text-sm inline-flex gap-x-2"
@@ -82,7 +82,7 @@ function ProfileButton() {
               <button
                 href="#"
                 class="text-gray-700 px-4 py-2 text-sm inline-flex gap-x-2"
-               onClick={handleInfo}
+                onClick={handleInfo}
               >
                 <img src={Info} alt="info" class="h-5 w-5" />
                 Update Information

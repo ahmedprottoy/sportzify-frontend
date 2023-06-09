@@ -42,7 +42,8 @@ function Profile() {
       // console.log("User blogs:", data);
     },
   });
-  console.log(userBlogs);
+  
+  
   useEffect(() => {
     userDataRefetch();
     userBlogsRefetch();
