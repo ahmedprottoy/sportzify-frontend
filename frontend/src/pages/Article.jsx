@@ -3,10 +3,15 @@ import { useParams } from "react-router-dom";
 import { useBlogData } from "../hooks/useBlogData.js";
 import Author from '../assets/writer.png'
 import Date from '../assets/calendar.png'
+import ErrorNotFound from "./ErrorNotFound.jsx";
 
 function Article() {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useBlogData(id);
+
+  if(isError){
+    return <ErrorNotFound />
+  }
 
 
   return (

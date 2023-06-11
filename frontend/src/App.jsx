@@ -8,7 +8,7 @@ import LoaderOverlay from "./components/common/LoaderOverlay.jsx";
 
 import SignUp from "./pages/SignUp.jsx";
 import SignIn from "./pages/SignIn.jsx";
-import Layout from './pages/layout.jsx'
+import Layout from "./pages/layout.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import Create from "./pages/Create.jsx";
 import Profile from "./pages/Profile.jsx";
@@ -16,17 +16,16 @@ import Profile from "./pages/Profile.jsx";
 import Article from "./pages/Article.jsx";
 import BlogUpdate from "./components/card/BlogUpdate.jsx";
 import ErrorNotFound from "./pages/ErrorNotFound.jsx";
+import PrivateRoutes from "./components/route/PrivateRoutes.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      // retry: false,
+      retry: false,
     },
   },
 });
-
-
 
 function App() {
   return (
@@ -38,16 +37,19 @@ function App() {
 
           <Route path="/*" element={<Layout />}>
             <Route path="home" element={<HomePage />} />
-            <Route path="create" element={<Create />} />
-            <Route path="profile/:username" element={<Profile />} />
-
             <Route path="article/:id" element={<Article />} />
+
+            <Route element={<PrivateRoutes />}>
+              <Route path="create" element={<Create />} />
+            <Route path="profile/:username" element={<Profile />} />
             <Route path="article/update/:id" element={<BlogUpdate />} />
-            <Route path="*" element={<ErrorNotFound />} /> 
+            </Route>
+
+            <Route path="*" element={<ErrorNotFound />} />
           </Route>
         </Routes>
       </AuthProvider>
-      
+
       <LoaderOverlay />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

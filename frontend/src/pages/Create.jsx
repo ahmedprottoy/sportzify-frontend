@@ -17,8 +17,6 @@ function Create() {
   const navigate=useNavigate();
 
   const handleChange = (value, name) => {
-    console.log(name, value);
-
     setBlogData((prevUserData) => ({
       ...prevUserData,
       [name]: value,

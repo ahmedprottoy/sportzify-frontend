@@ -34,9 +34,22 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("imageUrl");
   };
 
+  const checkLoggedIn = () => {
+    return isLoggedIn;
+  }
+
   return (
     <AuthContext.Provider
-      value={{ username, imageUrl, setUsername, setImageUrl, clearContext,setIsLoggedIn,isLoggedIn }}
+      value={{
+        username,
+        imageUrl,
+        setUsername,
+        setImageUrl,
+        clearContext,
+        setIsLoggedIn,
+        isLoggedIn,
+        checkLoggedIn,
+      }}
     >
       {children}
     </AuthContext.Provider>

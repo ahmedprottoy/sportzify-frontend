@@ -8,11 +8,12 @@ import UserBlogs from "../components/profile/UserBlogs";
 import ProfileButton from "../components/profile/ProfileButton";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import ErrorNotFound from "./ErrorNotFound";
 
 function Profile() {
   const { username } = useParams();
 
-  const {username : loggedUsername} = useContext(AuthContext)
+  const { username: loggedUsername } = useContext(AuthContext);
 
   const {
     data: userData,
@@ -42,13 +43,15 @@ function Profile() {
       // console.log("User blogs:", data);
     },
   });
-  
-  
+
   useEffect(() => {
     userDataRefetch();
     userBlogsRefetch();
   }, [username]);
 
+  if (userBlogsIsError || userDataIsError) {
+    return <ErrorNotFound />;
+  }
   return (
     <div>
       <div>
@@ -62,11 +65,7 @@ function Profile() {
       <div className="w-[70%] bg-white rounded-lg shadow-2xl p-4 mx-auto  -mt-20 relative">
         <UserImage imageUrl={userData?.imageUrl} />
 
-
-        {username === loggedUsername && (
-        <ProfileButton />
-         
-         )}
+        {username === loggedUsername && <ProfileButton />}
 
         <UserInfo
           username={userData?.username}
