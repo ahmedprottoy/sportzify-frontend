@@ -3,19 +3,35 @@ import { useParams } from "react-router-dom";
 import { useBlogData } from "../hooks/useBlogData.js";
 import Author from '../assets/writer.png'
 import Date from '../assets/calendar.png'
+import ErrorNotFound from "./ErrorNotFound.jsx";
 
 function Article() {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useBlogData(id);
 
+  if(isError){
+    return <ErrorNotFound />
+  }
+
 
   return (
     <div class="p-3  lg:mx-auto lg:w-1/2 w-full flex flex-col">
-      <img
-        src={data?.imageUrl}
-        alt="blogImage"
-        class="h-96 w-full object-cover rounded-md"
-      />
+     
+      {data?.imageUrl ? (
+        <img
+          alt="Developer"
+          src={data.imageUrl}
+          class="h-96 w-full object-cover rounded-md"
+          loading="lazy"
+        />
+      ) : (
+        <img
+          alt="Developer"
+          src="https://picsum.photos/2000/3000?grayscale"
+          class="h-96 w-full object-cover rounded-md"
+          loading="lazy"
+        />
+      )}
       <hr class="my-5 border-1 border-[#484848] border-dashed" />
 
       <p class="text-4xl font-semibold">{data?.title}</p>

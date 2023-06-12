@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import logo from "../../assets/signup-logo.png";
 import NavSearchBox from "./NavSearchBox";
 import NavButtons from "./NavButtons";
-import NavSideBar from "./NavSideBar";
 import NavOptions from "./NavOptions";
 import NavUser from "./NavUser";
 
 import { AuthContext } from "../../context/authContext.jsx";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -14,18 +14,18 @@ const Navbar = () => {
 
   return (
     <header
-      aria-label="Site Header"
+      
       className="shadow-lg sticky top-0 z-10 bg-white"
     >
       <div className="mx-auto max-w-screen-xl p-2">
         <div className="flex items-center justify-between gap-4 lg:gap-10">
           <div className="flex lg:w-0 lg:flex-1 flex-row">
             <img src={logo} alt="logo" className="h-16 mr-5" />
-            <a href="#" className="mt-4">
+            <Link to='/home' className="mt-4">
               <span className="text-2xl font-semibold mt-11 font-kalam">
                 Sportzify
               </span>
-            </a>
+            </Link>
           </div>
 
           <NavOptions />

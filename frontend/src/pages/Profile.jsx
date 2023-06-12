@@ -1,36 +1,38 @@
-import React, { useState,useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useQuery } from "react-query";
-import { AuthContext } from "../context/authContext";
 import { getUserDataReq, getUserBlogReq } from "../services/userService";
 import UserImage from "../components/profile/UserImage";
 import UserInfo from "../components/profile/UserInfo";
-import ProfileBackground from '../assets/pro-back.jpg'
+import ProfileBackground from "../assets/profile-back.svg";
 import UserBlogs from "../components/profile/UserBlogs";
-import Cloud from "../assets/pro-bg.jpg";
 import ProfileButton from "../components/profile/ProfileButton";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
+import ErrorNotFound from "./ErrorNotFound";
+import NoContent from "../components/profile/NoContent";
 
 function Profile() {
+  const { username } = useParams();
 
-const { username } = useContext(AuthContext);
-  
+  const { username: loggedUsername } = useContext(AuthContext);
 
-  const { data:userData, isLoading:userDataLoading, isError:userDataIsError, error:userDataError } = useQuery(
-    "userData",
-    () => getUserDataReq(username),
-    {
-      enabled: !!username, 
-      onError: (error) => {
-        console.error("User data error:", error);
-      },
-    }
-  );
+  const {
+    data: userData,
+    isError: userDataIsError,
+    error: userDataError,
+    refetch: userDataRefetch,
+  } = useQuery("userData", () => getUserDataReq(username), {
+    enabled: !!username,
+    onError: (error) => {
+      console.error("User data error:", error);
+    },
+  });
 
   const {
     data: userBlogs,
-    isLoading: userBlogsLoading,
     isError: userBlogsIsError,
     error: userBlogsError,
+    refetch: userBlogsRefetch,
   } = useQuery("userBlogs", () => getUserBlogReq(username), {
     enabled: !!username,
     onError: (error) => {
@@ -38,22 +40,31 @@ const { username } = useContext(AuthContext);
     },
     onSuccess: (data) => {
       // console.log("User blogs:", data);
-    }
-
+    },
   });
 
+  useEffect(() => {
+    userDataRefetch();
+    userBlogsRefetch();
+  }, [username]);
 
+  if (userBlogsIsError || userDataIsError) {
+    return <ErrorNotFound />;
+  }
   return (
-    <div className=" bg-slate-100 ">
+    <div>
       <div>
-        {/* <object className="w-full h-[37vh] object-cover" data={Upload} type="image/svg+xml"/> */}
-        <img src={ProfileBackground} alt="bg" className="h-[40vh] w-full object-cover " />
+        <img
+          src={ProfileBackground}
+          alt="bg"
+          className="h-[40vh] w-full object-cover "
+        />
       </div>
 
-      <div className="w-[70%] bg-white rounded-lg shadow-lg p-4 mx-auto  mt-5 relative">
+      <div className="w-[70%] bg-white rounded-lg shadow-2xl p-4 mx-auto  -mt-20 relative">
         <UserImage imageUrl={userData?.imageUrl} />
 
-        <ProfileButton />
+        {username === loggedUsername && <ProfileButton />}
 
         <UserInfo
           username={userData?.username}
@@ -61,17 +72,18 @@ const { username } = useContext(AuthContext);
           email={userData?.email}
         />
 
-        <hr className="border-1 border-solid border-x-slate-400 w-full my-5"/>
+        <hr className="border-1 border-solid border-x-slate-400 w-full my-5" />
       </div>
 
-      <div className="w-[70%] bg-white rounded-lg shadow-lg p-4 mx-auto  mt-5 relative">
-        <UserBlogs userBlogs={userBlogs} />
+      <div className="w-[70%] bg-white rounded-lg shadow-2xl p-4 mx-auto  my-5 relative ">
+        {userBlogs?.data && userBlogs?.data.length > 0 ? (
+          <UserBlogs userBlogs={userBlogs?.data} />
+        ) : (
+          <NoContent />
+        )}
       </div>
     </div>
   );
 }
 
 export default Profile;
-
-
-     

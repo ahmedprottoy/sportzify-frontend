@@ -5,6 +5,8 @@ import ImageUpload from "../create/imageUpload";
 import CreateInput from "../create/CreateInput";
 import { updateBlogReq } from "../../services/blogService";
 import { useMutation,useQueryClient } from "react-query";
+import ButtonUI from "../common/ButtonUI";
+import UpdateIcon from '../../assets/updateIcon.png'
 
 function BlogUpdate() {
   const { id } = useParams();
@@ -35,8 +37,6 @@ function BlogUpdate() {
     };
 
   const handleChange = (value, name) => {
-    console.log(name, value);
-
     setBlogData((prevUserData) => ({
       ...prevUserData,
       [name]: value,
@@ -63,16 +63,17 @@ function BlogUpdate() {
 
   return (
     <div>
-      <div class="text-center w-1/2 mx-auto flex flex-row justify-between p-2">
-        <label class="text-2xl mt-1 font-bold text-gray-500 tracking-wide">
+      <div class="text-center w-1/2 mx-auto flex flex-row justify-between p-2 my-5">
+        <label class="text-3xl mt-1 font-bold text-gray-500 tracking-wide">
           Update Post
         </label>
-        <button
-          class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+
+        <ButtonUI
+          text="Update Post"
           onClick={handleSubmit}
-        >
-          Publish
-        </button>
+          type="submit"
+          Icon={UpdateIcon}
+        />
       </div>
 
       <ImageUpload onFileChange={handleFileChange} image={selectedFile} />

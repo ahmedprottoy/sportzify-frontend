@@ -45,7 +45,7 @@ function UpdateImage({ closeModal }) {
         queryClient.invalidateQueries("userData");
         closeModal();
         setImageUrl(data.imageUrl);
-        navigate("/profile");
+        navigate(`/profile/${data.username}`);
         
       },
     }
