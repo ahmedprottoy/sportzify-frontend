@@ -13,6 +13,8 @@ function NavSearchBox() {
         id="search"
         type="search"
         placeholder="Search..."
+        autoComplete='off'
+        
       />
 
       <button

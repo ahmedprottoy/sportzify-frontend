@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import SignUpCover from "../components/signup/SignUpCover.jsx";
 import SignUpForm from "../components/signup/SignUpForm.jsx";
 import {signUpReq} from "../services/authService.js";
+import {AuthContext } from '../context/authContext.jsx'
 
 function SignUp() {
+
+ const { setUsername,setIsLoggedIn } = useContext(AuthContext);
   const [userData, setUserData] = useState({
     username: "",
     fullname: "",
@@ -14,26 +17,26 @@ function SignUp() {
     confirmPassword: "",
   });
   const navigate = useNavigate();
+
+
   const signUpMutation = useMutation(signUpReq, {
-    onSuccess: () => {
+    onSuccess: (data) => {
+      setUsername(data.data.username);
+      setIsLoggedIn(true);
       navigate("/");
     },
-    // onError: (error) => {
-    //   console.log(error.response.data);
-    // }
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (userData.password !== userData.confirmPassword) {
       console.log("something");
       console.log(userData.password);
       console.log(userData.confirmPassword);
     }
-
     signUpMutation.mutate(userData);
   };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
