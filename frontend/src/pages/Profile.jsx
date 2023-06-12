@@ -9,6 +9,7 @@ import ProfileButton from "../components/profile/ProfileButton";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import ErrorNotFound from "./ErrorNotFound";
+import NoContent from "../components/profile/NoContent";
 
 function Profile() {
   const { username } = useParams();
@@ -17,7 +18,6 @@ function Profile() {
 
   const {
     data: userData,
-    isLoading: userDataLoading,
     isError: userDataIsError,
     error: userDataError,
     refetch: userDataRefetch,
@@ -30,7 +30,6 @@ function Profile() {
 
   const {
     data: userBlogs,
-    isLoading: userBlogsLoading,
     isError: userBlogsIsError,
     error: userBlogsError,
     refetch: userBlogsRefetch,
@@ -77,7 +76,11 @@ function Profile() {
       </div>
 
       <div className="w-[70%] bg-white rounded-lg shadow-2xl p-4 mx-auto  my-5 relative ">
-        <UserBlogs userBlogs={userBlogs?.data} />
+        {userBlogs?.data && userBlogs?.data.length > 0 ? (
+          <UserBlogs userBlogs={userBlogs?.data} />
+        ) : (
+          <NoContent />
+        )}
       </div>
     </div>
   );

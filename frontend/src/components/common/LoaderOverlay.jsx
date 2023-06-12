@@ -9,13 +9,13 @@ const LoaderOverlay = () => {
   if (!isFetching && !isMutating) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-70 ">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white ">
       <object
         type="image/svg+xml"
         data={loadingIcon}
         className="max-w-xs w-full"
       />
-      <span className="text-2xl text-white">Loading...</span>
+      <span className="text-2xl text-black">Loading...</span>
     </div>
   );
 };

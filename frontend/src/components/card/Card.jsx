@@ -15,11 +15,21 @@ function card({ blog }) {
 
   return (
     <div class="shadow-xl group relative block lg:w-80 rounded-lg lg:h-96 m-5 overflow-hidden">
-      <img
-        alt="Developer"
-        src={blog.imageUrl}
-        class="absolute inset-0 h-full w-full object-cover"
-      />
+      {blog.imageUrl ? (
+        <img
+          alt="Developer"
+          src={blog.imageUrl}
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+      ) : (
+        <img
+          alt="Developer"
+          src="https://picsum.photos/200?grayscale"
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+      )}
 
       <div class="absolute z-0 bg-gradient-to-t from-black to-transparent inset-0" />
 
@@ -32,7 +42,9 @@ function card({ blog }) {
             onClick={handleToggle}
           />
         )}
-        {toggle && <CardOption blogId={blog.id} onClose={()=>setToggle(false)}/>}
+        {toggle && (
+          <CardOption blogId={blog.id} onClose={() => setToggle(false)} />
+        )}
         <p class="text-xl font-bold p-3 text-white sm:text-2xl ml-5">
           {blog.author}
         </p>

@@ -19,7 +19,6 @@ function UpdateInfo({ closeModal }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setUserData((prev) => {
       return {
         ...prev,
@@ -41,7 +40,7 @@ function UpdateInfo({ closeModal }) {
         console.log(username)
         queryClient.invalidateQueries("userData");
         closeModal();
-        navigate("/profile");
+        navigate(`/profile/${data.username}`);
       },
     }
   );

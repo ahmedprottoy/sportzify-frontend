@@ -35,8 +35,6 @@ function BlogUpdate() {
     };
 
   const handleChange = (value, name) => {
-    console.log(name, value);
-
     setBlogData((prevUserData) => ({
       ...prevUserData,
       [name]: value,
