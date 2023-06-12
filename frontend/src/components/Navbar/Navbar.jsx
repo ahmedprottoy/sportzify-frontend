@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <header
-      aria-label="Site Header"
+      
       className="shadow-lg sticky top-0 z-10 bg-white"
     >
       <div className="mx-auto max-w-screen-xl p-2">

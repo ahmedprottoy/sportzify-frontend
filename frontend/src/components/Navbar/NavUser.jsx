@@ -1,42 +1,57 @@
-import React,{useState,useContext} from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useContext, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { signOutReq } from "../../services/authService";
 import { useMutation } from "react-query";
-import ProfileLogo from '../../assets/profile.png'
-import SignOutLogo  from '../../assets/logout.png'
+import ProfileLogo from "../../assets/profile.png";
+import SignOutLogo from "../../assets/logout.png";
 import { AuthContext } from "../../context/authContext";
 import NoImage from "../../assets/NoImage.jpg";
-import ButtonUI from '../common/ButtonUI';
+import ButtonUI from "../common/ButtonUI";
 
 function NavUser() {
-const {username,imageUrl,clearContext} = useContext(AuthContext);
-      const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-      const navigate = useNavigate();
+  const { username, imageUrl, clearContext } = useContext(AuthContext);
+  
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const optionsRef = useRef(null);
+  const navigate = useNavigate();
 
-      const handleDropdownToggle = () => {
-        setIsDropdownOpen(!isDropdownOpen);
-      };
+  useEffect(() => {
+    window.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
-      const signOutMutation = useMutation(signOutReq, {
-        onSuccess: () => {
-          navigate("/sign-in");
-        },
-      });
+  const handleClickOutside = (event) => {
+    if (optionsRef.current && !optionsRef.current.contains(event.target)) {
+      setIsDropdownOpen(false);
+    }
+  };
 
-      const signOut = () => {
-        clearContext();
-        signOutMutation.mutate();
-      };
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const signOutMutation = useMutation(signOutReq, {
+    onSuccess: () => {
+      navigate("/sign-in");
+    },
+  });
+
+  const signOut = () => {
+    clearContext();
+    signOutMutation.mutate();
+  };
 
   return (
-    <div>
+    <div ref={optionsRef}>
       <button
         class={`block shrink-0 hover:ring-4  rounded-full ${
           isDropdownOpen ? "focus:ring-4" : ""
         }`}
         onClick={handleDropdownToggle}
       >
-        {(imageUrl) ? (
+        {imageUrl !== "null" ? (
           <img
             alt="Man"
             src={imageUrl}
@@ -81,7 +96,8 @@ const {username,imageUrl,clearContext} = useContext(AuthContext);
 
 export default NavUser;
 
-{/* <div className="top-12 right-4  bg-gray-200 rounded-lg shadow-lg absolute">
+{
+  /* <div className="top-12 right-4  bg-gray-200 rounded-lg shadow-lg absolute">
             <p>Prottoy09</p>
           <button
             onClick={signOut}
@@ -91,4 +107,5 @@ export default NavUser;
           </button>
         </div> 
     
-    */}
+    */
+}

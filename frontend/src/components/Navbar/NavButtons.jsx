@@ -7,9 +7,9 @@ function NavButtons() {
     <div>
       <Link
         to="/sign-in"
-        className="relative inline-flex items-center justify-center p-2 px-3 py-2 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-cyan-500 rounded-full shadow-md group mr-5"
+        className="relative inline-flex items-center justify-center p-2 px-3 py-2 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-gray-500 rounded-full shadow-md group mr-5"
       >
-        <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-cyan-500 group-hover:translate-x-0 ease">
+        <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-gray-500 group-hover:translate-x-0 ease">
           <svg
             className="w-6 h-6"
             fill="none"
@@ -25,7 +25,7 @@ function NavButtons() {
             ></path>
           </svg>
         </span>
-        <span className="absolute flex items-center justify-center w-full h-full text-cyan-500 transition-all duration-300 transform group-hover:translate-x-full ease text-base">
+        <span className="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease text-base">
           Log In
         </span>
         <span className="relative invisible">Button Text</span>
@@ -33,9 +33,9 @@ function NavButtons() {
 
       <Link
         to="/sign-up"
-        className="relative inline-flex items-center justify-center p-2 px-3 py-2 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-cyan-500 bg-cyan-500 rounded-full shadow-md group mr-5"
+        className="relative inline-flex items-center justify-center p-2 px-3 py-2 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-gray-500 bg-gray-500 rounded-full shadow-md group mr-5"
       >
-        <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-cyan-500 group-hover:translate-x-0 ease">
+        <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-gray-500 group-hover:translate-x-0 ease">
           <svg
             className="w-6 h-6"
             fill="none"
