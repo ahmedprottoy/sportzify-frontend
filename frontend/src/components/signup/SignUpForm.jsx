@@ -115,7 +115,10 @@ const signUpForm  = (props) => {
 
               <p className="mt-4 text-md text-gray-500 sm:mt-0">
                 Already have an account?
-                <Link to="/sign-in" className=" text-lg ml-3 text-sky-700 underline">
+                <Link
+                  to="/sign-in"
+                  className=" text-lg ml-3 text-sky-700 underline"
+                >
                   Log in
                 </Link>
                 .
@@ -123,9 +126,9 @@ const signUpForm  = (props) => {
             </div>
           </form>
           {isError && (
-            <div className="w-60 md:w-80 p-2 bg-rose-300 rounded-lg flex items-start ml-4">
+            <div className="w-96 p-2 bg-rose-300 rounded-lg flex items-start ml-4">
               <img alt="error" src={errorImg} className="w-5 h-5 mx-4 mt-1" />
-              <p>{error.response.data.message}</p>
+              <p>{error.response.data.errors.undefined[0]}</p>
             </div>
           )}
         </div>

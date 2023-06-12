@@ -36,7 +36,7 @@ const {username,imageUrl,clearContext} = useContext(AuthContext);
         }`}
         onClick={handleDropdownToggle}
       >
-        {imageUrl ? (
+        {(imageUrl) ? (
           <img
             alt="Man"
             src={imageUrl}

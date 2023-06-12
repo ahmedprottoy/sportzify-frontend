@@ -41,7 +41,7 @@ function CreateInput({ blogData, handleChange, handleSubmit,title,content }) {
             type="text"
             id="title"
             name="title"
-            className=" w-full h-auto p-2 mt-5 resize-none  outline-none placeholder-shown:border-gray-100 placeholder:text-4xl placeholder:text-gray-800 placeholder:font-semibold text-3xl font-semibold "
+            className=" w-full h-auto p-2 mt-5 resize-none  outline-none placeholder-shown:border-gray-100 placeholder:text-4xl placeholder:text-gray-800 placeholder:font-semibold text-4xl font-semibold "
             autoComplete="off"
             placeholder={title}
             value={blogData?.title}

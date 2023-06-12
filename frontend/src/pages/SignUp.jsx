@@ -25,6 +25,7 @@ function SignUp() {
       setIsLoggedIn(true);
       navigate("/home");
     },
+    
   });
 
   const handleSubmit = (e) => {
@@ -40,7 +41,6 @@ function SignUp() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setUserData((prevUserData) => ({
       ...prevUserData,
       [name]: value,

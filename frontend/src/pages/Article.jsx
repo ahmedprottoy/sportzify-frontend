@@ -20,7 +20,7 @@ function Article() {
       {data?.imageUrl ? (
         <img
           alt="Developer"
-          src={blog.imageUrl}
+          src={data.imageUrl}
           class="h-96 w-full object-cover rounded-md"
           loading="lazy"
         />

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { deleteBlogReq } from "../../services/blogService.js";
+import { AuthContext } from "../../context/authContext.jsx";
+
 
 function BlogDelete({ blogId, closeModal }) {
+  const {username} = useContext(AuthContext);
   const [isChecked, setIsChecked] = useState(false);
 
   const navigate = useNavigate();
@@ -23,7 +26,7 @@ function BlogDelete({ blogId, closeModal }) {
     onSuccess: (data) => {
       queryClient.invalidateQueries("userBlogs");
       closeModal();
-      navigate("/home");
+      navigate(`/profile/${username}`);
     },
   });
 

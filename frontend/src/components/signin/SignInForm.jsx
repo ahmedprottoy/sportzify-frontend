@@ -117,7 +117,10 @@ const signInForm = (props) => {
             {isError && (
               <div className="w-60 md:w-80 p-2 bg-rose-300 rounded-lg flex items-start">
                 <img alt="error" src={errorImg} className="w-5 h-5 mx-4 mt-1" />
-                <p>{error.response.data.message}</p>
+                <p>
+                  {error.response.data.message ||
+                    error.response.data.errors.undefined[0]}
+                </p>
               </div>
             )}
           </div>
