@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import SignInForm from "../components/signin/SignInForm";
-import SignInCover from "../components/signin/SignINCover";
+import SignInCover from "../components/signin/SignInCover";
 import  {signInReq} from "../services/authService.js";
 import { AuthContext } from "../context/authContext.jsx";
 
