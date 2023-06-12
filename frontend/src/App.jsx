@@ -8,7 +8,7 @@ import LoaderOverlay from "./components/common/LoaderOverlay.jsx";
 
 const SignUp = lazy(() => import("./pages/SignUp.jsx"));
 const SignIn = lazy(() => import("./pages/SignIn.jsx"));
-const Layout = lazy(() => import("./pages/layout.jsx"));
+const Layout = lazy(() => import("./pages/Layout.jsx"));
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
 const Create = lazy(() => import("./pages/Create.jsx"));
 const Profile = lazy(() => import("./pages/Profile.jsx"));
