@@ -30,11 +30,7 @@ function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (userData.password !== userData.confirmPassword) {
-      console.log("something");
-      console.log(userData.password);
-      console.log(userData.confirmPassword);
-    }
+   
     signUpMutation.mutate(userData);
   };
 
