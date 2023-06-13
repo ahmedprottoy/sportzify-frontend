@@ -72,13 +72,7 @@ function NavUser() {
             <p className="p-1">{username}</p>
           </div>
           <hr className="border-1 w-36 border-gray-700" />
-          {/* <button
-            onClick={signOut}
-            className="p-1 flex flex-row items-center  w-36  rounded-md bg-cyan-600 border-2 border-gray-700"
-          >
-            <img src={SignOutLogo} alt="Logo" className="h-6 w-6" />
-            {signOutMutation.isLoading ? "Signing Out..." : "Sign Out"}
-          </button> */}
+         
 
           <ButtonUI
             text="Sign Out"
