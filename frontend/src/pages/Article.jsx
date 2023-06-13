@@ -7,6 +7,9 @@ import ErrorNotFound from "./ErrorNotFound.jsx";
 import ButtonUI from "../components/common/ButtonUI.jsx";
 import Back from "../assets/reply.png";
 
+import '../style/articleRender.css'
+import { twMerge } from "tailwind-merge";
+
 function Article() {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useBlogData(id);
@@ -56,10 +59,10 @@ function Article() {
         </div>
       </div>
 
-      <p
-        class="my-10 first-letter:text-5xl"
+      <div
+        className={twMerge('my-10,first-letter:text-4xl','rich-content')}
         dangerouslySetInnerHTML={{ __html: data?.content }}
-      ></p>
+      ></div>
 
       <ButtonUI
         text="Go Back"
