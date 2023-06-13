@@ -38,7 +38,7 @@ function App() {
             <Route path="/sign-in" element={<SignIn />} />
 
             <Route path="/*" element={<Layout />}>
-              <Route path="home" element={<HomePage />} />
+              <Route path="" element={<HomePage />} />
               <Route path="article/:id" element={<Article />} />
 
               <Route element={<PrivateRoutes />}>

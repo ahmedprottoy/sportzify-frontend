@@ -8,15 +8,15 @@ function NavOptions() {
   return (
     <nav
       aria-label="Site Nav"
-      className="hidden gap-8 text-sm font-medium md:flex"
+      className=" gap-8 text-sm font-medium flex"
     >
-      <Link className="text-gray-500 text-lg" to="/home">
+      <Link to="/" className="text-gray-500 text-lg">
         Home
       </Link>
-      <Link className="text-gray-500 text-lg" to="/create">
+      <Link to="/create" className="text-gray-500 text-lg">
         Create
       </Link>
-      <Link className="text-gray-500 text-lg" to={`/profile/${username}`}>
+      <Link to={`/profile/${username}`} className="text-gray-500 text-lg">
         Profile
       </Link>
     </nav>
