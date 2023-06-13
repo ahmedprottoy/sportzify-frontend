@@ -1,7 +1,7 @@
 import axios from "axios";
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_SERVER_URL,
-  withCredentials: true,
+  // withCredentials: true,
 });
 
 const axiosRequest = async (url, method = "GET", data = null, headers={}) => {
