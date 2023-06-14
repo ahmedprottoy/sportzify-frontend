@@ -36,10 +36,6 @@ const Navbar = () => {
               <NavButtons />
             )}
           </div>
-
-          
-
-       
         </div>
       </div>
     </header>
