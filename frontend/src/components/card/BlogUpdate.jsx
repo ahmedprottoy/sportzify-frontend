@@ -63,8 +63,8 @@ function BlogUpdate() {
 
   return (
     <div>
-      <div class="text-center w-1/2 mx-auto flex flex-row justify-between p-2 my-5">
-        <label class="text-3xl mt-1 font-bold text-gray-500 tracking-wide">
+      <div className="text-center w-1/2 mx-auto flex flex-row justify-between p-2 my-5">
+        <label className="text-3xl mt-1 font-bold text-gray-500 tracking-wide">
           Update Post
         </label>
 

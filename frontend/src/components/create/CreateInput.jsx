@@ -36,7 +36,7 @@ function CreateInput({ blogData, handleChange, handleSubmit,title,content }) {
   return (
     <div>
       <form onSubmit={handleSubmit} className="mx-auto mb-0 w-1/2 space-y-4">
-        <div class="flex flex-col">
+        <div className="flex flex-col">
           <textarea
             type="text"
             id="title"

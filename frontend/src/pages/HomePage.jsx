@@ -45,12 +45,12 @@ function HomePage() {
           ))}
         </div>
 
-        <div class="flex flex-row justify-center my-10">
-          <div class="flex">
+        <div className="flex flex-row justify-center my-10">
+          <div className="flex">
             <button
               onClick={goToPreviousPage}
               disabled={currentPage === 1}
-              class="flex items-center px-4 py-2 mx-1 hover:bg-blue-600 text-gray-700 hover:text-white  bg-white rounded-md   shadow-lg border-solid border-2 disabled:cursor-not-allowed disabled:text-slate-300 disabled:hover:bg-transparent"
+              className="flex items-center px-4 py-2 mx-1 hover:bg-blue-600 text-gray-700 hover:text-white  bg-white rounded-md   shadow-lg border-solid border-2 disabled:cursor-not-allowed disabled:text-slate-300 disabled:hover:bg-transparent"
             >
               Previous
             </button>
@@ -69,7 +69,7 @@ function HomePage() {
             <button
               onClick={goToNextPage}
               disabled={currentPage === totalPages}
-              class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md  hover:bg-blue-600  hover:text-white  shadow-lg border-solid border-2 disabled:cursor-not-allowed disabled:text-slate-300 disabled:hover:bg-transparent"
+              className="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md  hover:bg-blue-600  hover:text-white  shadow-lg border-solid border-2 disabled:cursor-not-allowed disabled:text-slate-300 disabled:hover:bg-transparent"
             >
               Next
             </button>

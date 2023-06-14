@@ -48,8 +48,8 @@ function ProfileButton() {
   };
 
   return (
-    <div class="absolute top-10 right-10">
-      <div class="relative inline-block text-left">
+    <div className="absolute top-10 right-10">
+      <div className="relative inline-block text-left">
         <div>
           
 
@@ -65,36 +65,36 @@ function ProfileButton() {
 
         {isToggle && (
           <div
-            class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             ref={optionsRef}
           >
-            <div class="py-1" role="none">
+            <div className="py-1" role="none">
               <button
                 href="#"
-                class="text-gray-700 px-4 py-2 text-sm inline-flex gap-x-2"
+                className="text-gray-700 px-4 py-2 text-sm inline-flex gap-x-2"
                 onClick={handleImage}
               >
-                <img src={Image} alt="image" class="h-5 w-5" />
+                <img src={Image} alt="image" className="h-5 w-5" />
                 Update Profile Image
               </button>
             </div>
-            <div class="py-1" role="none">
+            <div className="py-1" role="none">
               <button
                 href="#"
-                class="text-gray-700 px-4 py-2 text-sm inline-flex gap-x-2"
+                className="text-gray-700 px-4 py-2 text-sm inline-flex gap-x-2"
                 onClick={handleInfo}
               >
-                <img src={Info} alt="info" class="h-5 w-5" />
+                <img src={Info} alt="info" className="h-5 w-5" />
                 Update Information
               </button>
             </div>
-            <div class="py-1" role="none">
+            <div className="py-1" role="none">
               <button
                 href="#"
-                class="text-gray-700 inline-flex gap-x-2 px-4 py-2 text-sm"
+                className="text-gray-700 inline-flex gap-x-2 px-4 py-2 text-sm"
                 onClick={handlePassword}
               >
-                <img src={Password} alt="info" class="h-5 w-5" />
+                <img src={Password} alt="info" className="h-5 w-5" />
                 Change Password
               </button>
             </div>

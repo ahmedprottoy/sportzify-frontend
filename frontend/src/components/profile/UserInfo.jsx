@@ -10,13 +10,13 @@ function UserInfo({ username, fullname, email }) {
         <div>
           <p className="text-4xl font-semibold">{fullname}</p>
         </div>
-        <div class="flex flex-row gap-2">
-          <img src={Author} alt="author" class="h-5" />
-          <p class="text-base font-base text-gray-400"> {username}</p>
+        <div className="flex flex-row gap-2">
+          <img src={Author} alt="author" className="h-5" />
+          <p className="text-base font-base text-gray-400"> {username}</p>
         </div>
-        <div class="flex flex-row gap-2">
-          <img src={Email} alt="author" class="h-5" />
-          <p class="text-base font-base text-gray-400"> {email}</p>
+        <div className="flex flex-row gap-2">
+          <img src={Email} alt="author" className="h-5" />
+          <p className="text-base font-base text-gray-400"> {email}</p>
         </div>
       </div>
     </div>

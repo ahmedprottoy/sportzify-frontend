@@ -2,7 +2,7 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOutReq } from "../../services/authService";
 import { useMutation } from "react-query";
-import ProfileLogo from "../../assets/profile.png";
+import ProfileLogo from "../../assets/writer.png";
 import SignOutLogo from "../../assets/logout.png";
 import { AuthContext } from "../../context/authContext";
 import NoImage from "../../assets/NoImage.jpg";
@@ -46,7 +46,7 @@ function NavUser() {
   return (
     <div ref={optionsRef}>
       <button
-        class={`block shrink-0 hover:ring-4  rounded-full ${
+        className={`block shrink-0 hover:ring-4  rounded-full ${
           isDropdownOpen ? "focus:ring-4" : ""
         }`}
         onClick={handleDropdownToggle}
@@ -55,13 +55,13 @@ function NavUser() {
           <img
             alt="Man"
             src={imageUrl}
-            class="h-10 w-10 rounded-full object-cover"
+            className="h-10 w-10 rounded-full object-cover"
           />
         ) : (
           <img
             alt="Man"
             src={NoImage}
-            class="h-10 w-10 rounded-full object-cover"
+            className="h-10 w-10 rounded-full object-cover"
           />
         )}
       </button>

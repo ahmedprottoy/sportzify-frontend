@@ -7,15 +7,15 @@ import CreateIcon from'../../assets/create.png'
 function NoContent() {
     const navigate=useNavigate();
   return (
-    <div class="flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <img
         src={Noblog}
         alt="no content"
-        class="w-2/3 object-cover rounded-md"
+        className="w-2/3 object-cover rounded-md"
         loading="lazy"
       />
 
-      <p class='text-3xl font-semibold'>Nothing to show here...</p>
+      <p className='text-3xl font-semibold'>Nothing to show here...</p>
 
       <ButtonUI
         text="Create Blogs here!"

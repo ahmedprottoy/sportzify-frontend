@@ -7,6 +7,7 @@ export default {
     },
     fontFamily: {
       kalam: ["Kalam", "cursive"],
+      nunito: ["Nunito Sans", "sans-serif"],
     },
   },
   plugins: [],

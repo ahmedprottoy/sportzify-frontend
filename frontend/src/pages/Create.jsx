@@ -34,7 +34,7 @@ function Create() {
       navigate(`/article/${data.id}`);
     },
     onError : (err) => {
-      // console.log(err.response.data.errors.undefined[0]);
+    
       setIsError(err.response.data.errors.undefined[0]);
     }
 
@@ -50,8 +50,8 @@ function Create() {
   };
   return (
     <div className="">
-      <div class="text-center w-1/2 mx-auto flex flex-row justify-between p-2 my-5">
-        <label class="text-4xl mt-1 font-bold text-gray-500 tracking-wide">
+      <div className="text-center w-1/2 mx-auto flex flex-row justify-between p-2 my-5">
+        <label className="text-4xl mt-1 font-bold text-gray-500 tracking-wide">
           Create Post
         </label>
 
