@@ -3,6 +3,7 @@ import { useMutation } from "react-query";
 import Button from "../common/Button";
 import { updatePasswordReq } from "../../services/userService";
 import { AuthContext } from "../../context/authContext";
+import ButtonUI from "../common/ButtonUI";
 
 function UpdatePassword({ closeModal }) {
   const { username } = useContext(AuthContext);
@@ -168,7 +169,12 @@ function UpdatePassword({ closeModal }) {
           </div>
         </div>
 
-        <Button text="Update" onClick={handleSubmit} />
+        <ButtonUI
+          text="Update Image"
+          onClick={handleSubmit}
+          type="submit"
+          className="mt-5"
+        />
       </form>
     </div>
   );

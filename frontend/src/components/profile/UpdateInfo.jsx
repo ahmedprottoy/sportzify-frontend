@@ -4,6 +4,7 @@ import Button from "../common/Button";
 import { AuthContext } from "../../context/authContext";
 import { updateUserDataReq } from "../../services/userService.js";
 import { useNavigate } from "react-router-dom";
+import ButtonUI from "../common/ButtonUI";
 
 function UpdateInfo({ closeModal }) {
   const { username, setUsername } = useContext(AuthContext);
@@ -50,7 +51,6 @@ function UpdateInfo({ closeModal }) {
       {" "}
       <h1 className="text-4xl font-semibold">Update Info</h1>
       <form onSubmit={handleSubmit} className="mt-4 grid grid-cols-6 gap-6 ">
-
         <div className="col-span-6 sm:col-span-3">
           <label for="fullname" className="labelField">
             Full Name
@@ -99,7 +99,12 @@ function UpdateInfo({ closeModal }) {
           />
         </div>
       </form>
-      <Button text="Update" className="mt-5" onClick={handleSubmit} />
+      <ButtonUI
+        text="Update Image"
+        onClick={handleSubmit}
+        type="submit"
+        className="mt-5"
+      />
     </div>
   );
 }

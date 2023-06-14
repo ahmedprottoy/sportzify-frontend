@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/authContext";
 import {  useNavigate } from "react-router-dom";
 
 import Upload from "../../assets/upload.svg";
+import ButtonUI from "../common/ButtonUI.jsx";
 
 function UpdateImage({ closeModal }) {
   const { username,setImageUrl } = useContext(AuthContext);
@@ -90,12 +91,14 @@ function UpdateImage({ closeModal }) {
         </label>
       </div>
 
-      <button
+      {/* <button
         className="p-3 bg-gray-200 w-40 rounded-lg"
         onClick={handleSubmit}
       >
         Update Image
-      </button>
+      </button> */}
+
+      <ButtonUI text="Update Image" onClick={handleSubmit} type='submit' className='mt-5'/>
     </div>
   );
 }
