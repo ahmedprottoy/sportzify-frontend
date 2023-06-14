@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useBlogData } from "../../hooks/useBlogData";
-import ImageUpload from "../create/imageUpload";
-import CreateInput from "../create/CreateInput";
+import ImageUpload from "../articleCreate/imageUpload";
+import CreateInput from "../articleCreate/CreateInput";
 import { updateBlogReq } from "../../services/blogService";
 import { useMutation,useQueryClient } from "react-query";
 import ButtonUI from "../common/ButtonUI";
