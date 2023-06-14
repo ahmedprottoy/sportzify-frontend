@@ -100,7 +100,7 @@ function UpdateInfo({ closeModal }) {
         </div>
       </form>
       <ButtonUI
-        text="Update Image"
+        text="Update Info"
         onClick={handleSubmit}
         type="submit"
         className="mt-5"

@@ -170,7 +170,7 @@ function UpdatePassword({ closeModal }) {
         </div>
 
         <ButtonUI
-          text="Update Image"
+          text="Update Password"
           onClick={handleSubmit}
           type="submit"
           className="mt-5"
