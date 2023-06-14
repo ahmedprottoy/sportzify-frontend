@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import Option from "../../assets/menu4.png";
 import CardOption from "./CardOption";
-import { AuthContext } from "../../context/authContext.jsx";
+import { AuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom";
 
 function card({ blog }) {

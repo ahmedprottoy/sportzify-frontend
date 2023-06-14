@@ -1,37 +1,35 @@
-import React, { useState } from 'react'
-import {getUserDataReq} from '../../services/userService.js'
-import { useQuery } from 'react-query';
-import SearchedUser from './SearchedUser.jsx';
-import Modal from '../common/Modal.jsx';
-import NotFound from './NotFound.jsx';
+import React, { useState } from "react";
+import { getUserDataReq } from "../../services/userService.js";
+import { useQuery } from "react-query";
+import SearchedUser from "./SearchedUser";
+import Modal from "../common/Modal";
+import NotFound from "./NotFound";
 
 function NavSearchBox() {
+  const [searchUser, setSearchUser] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
 
-const [searchUser, setSearchUser] = useState('')
-const [isModalOpen, setIsModalOpen] = useState(false);
- const [modalContent, setModalContent] = useState(null);
-
-
-const {data,isError, error, isLoading,refetch} = useQuery(['searchUser', searchUser], () => getUserDataReq(searchUser),{
- enabled: false,
- onSuccess: (data) => {
-    setIsModalOpen(true);
-    setModalContent(<SearchedUser data={data} closeModal={closeModal} />);
-    setSearchUser('');
-  },
-  onError: (error) => {
+  const { data, isError, error, isLoading, refetch } = useQuery(
+    ["searchUser", searchUser],
+    () => getUserDataReq(searchUser),
+    {
+      enabled: false,
+      onSuccess: (data) => {
         setIsModalOpen(true);
-    setModalContent(<NotFound closeModal={closeModal} />);setSearchUser("");
-  }
-});
-const closeModal = () =>
-{
-  setIsModalOpen(false);
-}
-
-
-
-
+        setModalContent(<SearchedUser data={data} closeModal={closeModal} />);
+        setSearchUser("");
+      },
+      onError: (error) => {
+        setIsModalOpen(true);
+        setModalContent(<NotFound closeModal={closeModal} />);
+        setSearchUser("");
+      },
+    }
+  );
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="relative">
@@ -72,11 +70,9 @@ const closeModal = () =>
         </svg>
       </button>
 
-      {
-        isModalOpen && <Modal content={modalContent} closeModal={closeModal} />
-      }
+      {isModalOpen && <Modal content={modalContent} closeModal={closeModal} />}
     </div>
   );
 }
 
-export default NavSearchBox
+export default NavSearchBox;

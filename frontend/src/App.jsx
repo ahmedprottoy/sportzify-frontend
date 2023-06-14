@@ -1,23 +1,21 @@
-import React,{lazy,Suspense} from "react";
+import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { AuthProvider } from "./context/authContext.jsx";
+import { AuthProvider } from "./context/authContext";
 
-import LoaderOverlay from "./components/common/LoaderOverlay.jsx";
+import LoaderOverlay from "./components/common/LoaderOverlay";
 
-const SignUp = lazy(() => import("./pages/SignUp.jsx"));
-const SignIn = lazy(() => import("./pages/SignIn.jsx"));
-const Layout = lazy(() => import("./pages/Layout.jsx"));
-const HomePage = lazy(() => import("./pages/HomePage.jsx"));
-const Create = lazy(() => import("./pages/Create.jsx"));
-const Profile = lazy(() => import("./pages/Profile.jsx"));
-const Article = lazy(() => import("./pages/Article.jsx"));
-const BlogUpdate = lazy(() => import("./components/card/BlogUpdate.jsx"));
-const ErrorNotFound = lazy(() => import("./pages/ErrorNotFound.jsx"));
-const PrivateRoutes = lazy(() => import("./components/route/PrivateRoutes.jsx"));
-
-
+const SignUp = lazy(() => import("./pages/SignUp"));
+const SignIn = lazy(() => import("./pages/SignIn"));
+const Layout = lazy(() => import("./pages/Layout"));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const Create = lazy(() => import("./pages/Create"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Article = lazy(() => import("./pages/Article"));
+const BlogUpdate = lazy(() => import("./components/card/BlogUpdate"));
+const ErrorNotFound = lazy(() => import("./pages/ErrorNotFound"));
+const PrivateRoutes = lazy(() => import("./components/route/PrivateRoutes"));
 
 const queryClient = new QueryClient({
   defaultOptions: {

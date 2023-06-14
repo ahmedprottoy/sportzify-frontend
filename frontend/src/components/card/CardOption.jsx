@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import BlogDelete from "./BlogDelete.jsx";
-import Modal from "../common/Modal.jsx";
+import BlogDelete from "./BlogDelete";
+import Modal from "../common/Modal";
 
-import DeleteIcon from '../../assets/deleteIcon.png';
-import EditIcon from '../../assets/editIcon.png';
+import DeleteIcon from "../../assets/deleteIcon.png";
+import EditIcon from "../../assets/editIcon.png";
 
 function CardOption({ blogId, onClose }) {
   const navigate = useNavigate();
@@ -20,10 +20,7 @@ function CardOption({ blogId, onClose }) {
   }, []);
 
   const handleClickOutside = (event) => {
-    if (
-      optionsRef.current &&
-      !optionsRef.current.contains(event.target)
-    ) {
+    if (optionsRef.current && !optionsRef.current.contains(event.target)) {
       onClose();
     }
   };

@@ -1,11 +1,11 @@
-import React from 'react'
-import Card from '../card/Card.jsx'
+import React from "react";
+import Card from "../card/Card";
 
-function UserBlogs({ userBlogs}) {
-    if (!userBlogs) {
-      return <div>....</div>;
-    }
-  
+function UserBlogs({ userBlogs }) {
+  if (!userBlogs) {
+    return <div>....</div>;
+  }
+
   return (
     <div>
       <div className="container mx-auto flex flex-wrap justify-evenly">
@@ -17,4 +17,4 @@ function UserBlogs({ userBlogs}) {
   );
 }
 
-export default UserBlogs
+export default UserBlogs;

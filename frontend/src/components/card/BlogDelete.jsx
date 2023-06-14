@@ -2,11 +2,10 @@ import React, { useContext, useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { deleteBlogReq } from "../../services/blogService.js";
-import { AuthContext } from "../../context/authContext.jsx";
-
+import { AuthContext } from "../../context/authContext";
 
 function BlogDelete({ blogId, closeModal }) {
-  const {username} = useContext(AuthContext);
+  const { username } = useContext(AuthContext);
   const [isChecked, setIsChecked] = useState(false);
 
   const navigate = useNavigate();
@@ -63,7 +62,10 @@ function BlogDelete({ blogId, closeModal }) {
           >
             Delete
           </button>
-          <button className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md mx-10" onClick={closeModal}>
+          <button
+            className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md mx-10"
+            onClick={closeModal}
+          >
             Cancel
           </button>
         </div>

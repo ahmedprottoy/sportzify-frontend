@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import logo from "../../assets/signup-logo.png";
-import NavSearchBox from "./NavSearchBox.jsx";
-import NavButtons from "./NavButtons.jsx";
-import NavOptions from "./NavOptions.jsx";
-import NavUser from "./NavUser.jsx";
+import NavSearchBox from "./NavSearchBox";
+import NavButtons from "./NavButtons";
+import NavOptions from "./NavOptions";
+import NavUser from "./NavUser";
 
-import { AuthContext } from "../../context/authContext.jsx";
+import { AuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {

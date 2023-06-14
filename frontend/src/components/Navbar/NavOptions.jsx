@@ -1,15 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/authContext.jsx";
-
+import { AuthContext } from "../../context/authContext";
 
 function NavOptions() {
   const { username } = useContext(AuthContext);
   return (
-    <nav
-      aria-label="Site Nav"
-      className=" gap-8 text-sm font-medium flex"
-    >
+    <nav aria-label="Site Nav" className=" gap-8 text-sm font-medium flex">
       <Link to="/" className="text-gray-500 text-lg">
         Home
       </Link>
@@ -23,4 +19,4 @@ function NavOptions() {
   );
 }
 
-export default NavOptions
+export default NavOptions;

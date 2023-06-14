@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Modal from "../common/Modal.jsx";
+import Modal from "../common/Modal";
 import UpdateImage from "./UpdateImage";
 import UpdatePassword from "./UpdatePassword";
 import UpdateInfo from "./UpdateInfo";
@@ -7,27 +7,27 @@ import Edit from "../../assets/edit-profile.png";
 import Image from "../../assets/edit-image.png";
 import Password from "../../assets/edit-password.png";
 import Info from "../../assets/edit-info.png";
-import ButtonUI from "../common/ButtonUI.jsx";
+import ButtonUI from "../common/ButtonUI";
 
 function ProfileButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [isToggle, setIsToggle] = useState(false);
 
-    const optionsRef = useRef(null);
+  const optionsRef = useRef(null);
 
-    useEffect(() => {
-      window.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        window.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, []);
-
-    const handleClickOutside = (event) => {
-      if (optionsRef.current && !optionsRef.current.contains(event.target)) {
-        setIsToggle(false);
-      }
+  useEffect(() => {
+    window.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
     };
+  }, []);
+
+  const handleClickOutside = (event) => {
+    if (optionsRef.current && !optionsRef.current.contains(event.target)) {
+      setIsToggle(false);
+    }
+  };
 
   const handleImage = () => {
     setIsModalOpen(true);
@@ -51,15 +51,13 @@ function ProfileButton() {
     <div className="absolute top-10 right-10">
       <div className="relative inline-block text-left">
         <div>
-          
-
           <ButtonUI
             text="Edit Profile"
             onClick={() => {
               setIsToggle(!isToggle);
             }}
             Icon={Edit}
-            className={isToggle ? 'bg-gray-800' : ''}
+            className={isToggle ? "bg-gray-800" : ""}
           />
         </div>
 

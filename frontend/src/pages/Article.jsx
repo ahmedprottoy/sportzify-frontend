@@ -3,19 +3,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useBlogData } from "../hooks/useBlogData.js";
 import Author from "../assets/writer.png";
 import Date from "../assets/calendar.png";
-import ErrorNotFound from "./ErrorNotFound.jsx";
-import ButtonUI from "../components/common/ButtonUI.jsx";
+import ErrorNotFound from "./ErrorNotFound";
+import ButtonUI from "../components/common/ButtonUI";
 import Back from "../assets/reply.png";
-import UpdatedBlog from '../assets/updatedBlog.png'
+import UpdatedBlog from "../assets/updatedBlog.png";
 
-import '../style/articleRender.css'
+import "../style/articleRender.css";
 import { twMerge } from "tailwind-merge";
 
 function Article() {
   const { id } = useParams();
   const { data, isError } = useBlogData(id);
   const navigate = useNavigate();
-
 
   if (isError) {
     return <ErrorNotFound />;

@@ -1,53 +1,50 @@
-import React, { useState,useContext } from "react";
-import {useMutation} from "react-query";
-import Button from "../common/Button.jsx";
-import  {updatePasswordReq}  from "../../services/userService";
+import React, { useState, useContext } from "react";
+import { useMutation } from "react-query";
+import Button from "../common/Button";
+import { updatePasswordReq } from "../../services/userService";
 import { AuthContext } from "../../context/authContext";
 
-function UpdatePassword({closeModal}) {
+function UpdatePassword({ closeModal }) {
   const { username } = useContext(AuthContext);
-    const [userData, setUserData] = useState({
-        oldPassword: "",
-        newPassword: "",
-        confirmPassword: "",
-        });
+  const [userData, setUserData] = useState({
+    oldPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUserData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-    const updatePasswordMutation = useMutation(
-        (data) => updatePasswordReq(data.userData, data.username),
-        {
-            onSuccess: (data) => {
-                closeModal();
-            },
+  const updatePasswordMutation = useMutation(
+    (data) => updatePasswordReq(data.userData, data.username),
+    {
+      onSuccess: (data) => {
+        closeModal();
+      },
 
-            onError: (error) => {
-                console.error("Update password error:", error);
-            },
-        }
-    );
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if(userData.newPassword !== userData.confirmPassword){
-          console.log("Password not matched");
-          return;
-        }
-        updatePasswordMutation.mutate({userData,username});
+      onError: (error) => {
+        console.error("Update password error:", error);
+      },
     }
+  );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (userData.newPassword !== userData.confirmPassword) {
+      console.log("Password not matched");
+      return;
+    }
+    updatePasswordMutation.mutate({ userData, username });
+  };
 
   return (
     <div>
-      <form
-        onSubmit={handleSubmit}
-        className="mx-auto max-w-md space-y-4"
-      >
+      <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-4">
         <div>
           <label for="password" className="labelField text-lg">
             Old Password
@@ -91,7 +88,7 @@ function UpdatePassword({closeModal}) {
 
         <div>
           <label for="password" className="labelField text-lg">
-           New Password
+            New Password
           </label>
 
           <div className="relative">
@@ -171,9 +168,8 @@ function UpdatePassword({closeModal}) {
           </div>
         </div>
 
-        <Button  text='Update' onClick={handleSubmit} />
+        <Button text="Update" onClick={handleSubmit} />
       </form>
-
     </div>
   );
 }
