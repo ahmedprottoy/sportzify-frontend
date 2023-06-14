@@ -10,7 +10,7 @@ const SignUp = lazy(() => import("./pages/SignUp"));
 const SignIn = lazy(() => import("./pages/SignIn"));
 const Layout = lazy(() => import("./pages/Layout"));
 const HomePage = lazy(() => import("./pages/HomePage"));
-const Create = lazy(() => import("./pages/Create"));
+const ArticleCreate = lazy(() => import("./pages/ArticleCreate"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Article = lazy(() => import("./pages/Article"));
 const BlogUpdate = lazy(() => import("./components/card/BlogUpdate"));
@@ -40,7 +40,7 @@ function App() {
               <Route path="article/:id" element={<Article />} />
 
               <Route element={<PrivateRoutes />}>
-                <Route path="create" element={<Create />} />
+                <Route path="create" element={<ArticleCreate />} />
                 <Route path="profile/:username" element={<Profile />} />
                 <Route path="article/update/:id" element={<BlogUpdate />} />
               </Route>

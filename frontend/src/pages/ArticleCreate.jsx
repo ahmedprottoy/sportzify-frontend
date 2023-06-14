@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
 import { createBlogReq } from "../services/blogService";
-import ImageUpload from "../components/create/imageUpload";
-import CreateInput from "../components/create/CreateInput";
+import ImageUpload from "../components/articleCreate/imageUpload";
+import CreateInput from "../components/articleCreate/CreateInput";
 import Upload from "../assets/upload.svg";
 import ButtonUI from "../components/common/ButtonUI";
 import Publish from "../assets/publish.png";
