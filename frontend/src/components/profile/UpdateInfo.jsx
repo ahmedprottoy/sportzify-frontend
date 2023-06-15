@@ -52,7 +52,7 @@ function UpdateInfo({ closeModal }) {
       <h1 className="text-4xl font-semibold">Update Info</h1>
       <form onSubmit={handleSubmit} className="mt-4 grid grid-cols-6 gap-6 ">
         <div className="col-span-6 sm:col-span-3">
-          <label for="fullname" className="labelField">
+          <label  className="labelField">
             Full Name
           </label>
 
@@ -68,7 +68,7 @@ function UpdateInfo({ closeModal }) {
         </div>
 
         <div className="col-span-6">
-          <label for="email" className="labelField">
+          <label className="labelField">
             Email
           </label>
 
@@ -84,7 +84,7 @@ function UpdateInfo({ closeModal }) {
         </div>
 
         <div className="col-span-6 sm:col-span-3">
-          <label for="password" className="labelField">
+          <label className="labelField">
             Password
           </label>
 

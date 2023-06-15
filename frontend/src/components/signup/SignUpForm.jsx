@@ -31,7 +31,7 @@ const signUpForm = (props) => {
           className="mt-8 grid grid-cols-6 gap-6 p-4"
         >
           <div className="col-span-6 sm:col-span-3">
-            <label for="username" className="labelField">
+            <label className="labelField">
               Username
             </label>
 
@@ -47,7 +47,7 @@ const signUpForm = (props) => {
           </div>
 
           <div className="col-span-6 sm:col-span-3">
-            <label for="fullname" className="labelField">
+            <label  className="labelField">
               Full Name
             </label>
 
@@ -63,7 +63,7 @@ const signUpForm = (props) => {
           </div>
 
           <div className="col-span-6">
-            <label for="email" className="labelField">
+            <label  className="labelField">
               Email
             </label>
 
@@ -79,7 +79,7 @@ const signUpForm = (props) => {
           </div>
 
           <div className="col-span-6 sm:col-span-3">
-            <label for="password" className="labelField">
+            <label  className="labelField">
               Password
             </label>
 
@@ -95,7 +95,7 @@ const signUpForm = (props) => {
           </div>
 
           <div className="col-span-6 sm:col-span-3">
-            <label for="passwordConfirmation" className="labelField">
+            <label  className="labelField">
               Confirm Password
             </label>
 
