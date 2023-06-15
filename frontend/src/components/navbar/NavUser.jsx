@@ -51,7 +51,7 @@ function NavUser() {
         }`}
         onClick={handleDropdownToggle}
       >
-        {imageUrl !== "null" ? (
+        {imageUrl ? (
           <img
             alt="Man"
             src={imageUrl}
