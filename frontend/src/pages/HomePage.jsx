@@ -5,7 +5,7 @@ import Card from "../components/card/Card";
 import ErrorNotFound from "./ErrorNotFound";
 
 function HomePage() {
-  const pageSize = 12;
+  const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
   const { isLoading, isError, data, error } = useQuery("blogs", getBlogsReq);
