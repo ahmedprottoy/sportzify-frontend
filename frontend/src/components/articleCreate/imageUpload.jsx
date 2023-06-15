@@ -51,6 +51,7 @@ function ImageUpload({ onFileChange,image }) {
                 </span>
                 from your computer
               </p>
+              <p></p>
             </div>
             <input
               type="file"

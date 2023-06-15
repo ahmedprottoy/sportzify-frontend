@@ -7,6 +7,7 @@ import ErrorNotFound from "./ErrorNotFound";
 import ButtonUI from "../components/common/ButtonUI";
 import Back from "../assets/reply.png";
 import UpdatedBlog from "../assets/updatedBlog.png";
+import dayjs from "dayjs";
 
 import "../style/articleRender.css";
 import { twMerge } from "tailwind-merge";
@@ -55,18 +56,14 @@ function Article() {
           <div className="flex flex-row gap-2 my-2">
             <img src={Date} alt="author" className="h-6" />
             <p className="text-base font-extralight text-gray-500">
-              Posted : {data?.postedAt.date} {data?.postedAt.month},
-              {data?.postedAt.year} || {data?.postedAt.hour}:
-              {data?.postedAt.minute} {data?.postedAt.period}
+              Posted : {dayjs(data?.postedAt).format("DD MMM,YYYY || hh:mma")}
             </p>
           </div>
 
           <div className="flex flex-row gap-2 mt-2">
             <img src={UpdatedBlog} alt="author" className="h-6" />
             <p className="text-base font-extralight text-gray-500">
-              Updated : {data?.updatedAt.date} {data?.updatedAt.month},
-              {data?.updatedAt.year} || {data?.updatedAt.hour}:
-              {data?.updatedAt.minute} {data?.updatedAt.period}
+              Updated : {dayjs(data?.updatedAt).format("DD MMM,YYYY || hh:mma")}
             </p>
           </div>
         </div>

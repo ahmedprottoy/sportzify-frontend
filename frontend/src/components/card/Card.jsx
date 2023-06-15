@@ -3,6 +3,7 @@ import Option from "../../assets/menu4.png";
 import CardOption from "./CardOption";
 import { AuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom";
+import dayjs from 'dayjs'
 
 function card({ blog }) {
   const { username } = useContext(AuthContext);
@@ -49,9 +50,9 @@ function card({ blog }) {
           {blog.author}
         </p>
         <div className="flex flex-col absolute top-0 right-0 p-2 rounded-lg text-slate-100 bg-indigo-400 text-sm lg:text-base">
-          <span>{blog.postedAt.date}</span>
-          <span>{blog.postedAt.month}</span>
-          <span>{blog.postedAt.year}</span>
+          <span> {dayjs(blog?.postedAt).format('DD')}</span>
+          <span> {dayjs(blog?.postedAt).format('MMM')}</span>
+          <span> {dayjs(blog?.postedAt).format('YYYY')}</span>
         </div>
       </div>
 

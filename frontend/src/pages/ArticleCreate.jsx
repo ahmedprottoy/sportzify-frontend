@@ -34,8 +34,11 @@ function Create() {
       navigate(`/article/${data.id}`);
     },
     onError : (err) => {
-    
-      setIsError(err.response.data.errors.undefined[0]);
+      if (err.response.data.message){
+        setIsError(err.response.data.message);
+      }else{
+        setIsError(err.response.data.errors.undefined[0]);
+      }
     }
 
   });
@@ -68,7 +71,7 @@ function Create() {
       />
 
       {isError && (
-        <div className="w-60 md:w-80 p-2 mx-auto mt-16 bg-rose-300 rounded-lg flex items-start">
+        <div className="w-60 md:w-80 p-2 mx-auto my-16 bg-rose-300 rounded-lg flex items-start">
           <img alt="error" src={errorImg} className="w-5 h-5 mx-4 mt-1" />
           <p>
             {isError}
