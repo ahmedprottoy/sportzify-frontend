@@ -11,8 +11,6 @@ import ButtonUI from "../common/ButtonUI";
 function NavUser() {
   const { username, imageUrl, clearContext } = useContext(AuthContext);
 
-  console.log(imageUrl)
-  
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const optionsRef = useRef(null);
   const navigate = useNavigate();
@@ -53,16 +51,16 @@ function NavUser() {
         }`}
         onClick={handleDropdownToggle}
       >
-        {!imageUrl ? (
+        {imageUrl ? (
           <img
             alt="Man"
-            src={NoImage}
+            src={imageUrl}
             className="h-10 w-10 rounded-full object-cover"
           />
         ) : (
           <img
-            alt="Man"
-            src={imageUrl}
+            alt="No Man"
+            src={NoImage}
             className="h-10 w-10 rounded-full object-cover"
           />
         )}

@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [isLoggedIn,setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("username", username);
-    localStorage.setItem("imageUrl", imageUrl);
+    if (imageUrl) localStorage.setItem("imageUrl", imageUrl);
   }, [username, imageUrl]);
 
   const clearContext = () => {
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkLoggedIn = () => {
     return isLoggedIn;
-  }
+  };
 
   return (
     <AuthContext.Provider
