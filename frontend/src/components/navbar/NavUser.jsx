@@ -51,16 +51,16 @@ function NavUser() {
         }`}
         onClick={handleDropdownToggle}
       >
-        {imageUrl ? (
+        {imageUrl === null ? (
           <img
             alt="Man"
-            src={imageUrl}
+            src={NoImage}
             className="h-10 w-10 rounded-full object-cover"
           />
         ) : (
           <img
             alt="Man"
-            src={NoImage}
+            src={imageUrl}
             className="h-10 w-10 rounded-full object-cover"
           />
         )}
@@ -72,7 +72,6 @@ function NavUser() {
             <p className="p-1">{username}</p>
           </div>
           <hr className="border-1 w-36 border-gray-700" />
-         
 
           <ButtonUI
             text="Sign Out"
