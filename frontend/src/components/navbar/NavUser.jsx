@@ -10,6 +10,8 @@ import ButtonUI from "../common/ButtonUI";
 
 function NavUser() {
   const { username, imageUrl, clearContext } = useContext(AuthContext);
+
+  console.log(imageUrl)
   
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const optionsRef = useRef(null);
@@ -51,7 +53,7 @@ function NavUser() {
         }`}
         onClick={handleDropdownToggle}
       >
-        {imageUrl === null ? (
+        {!imageUrl ? (
           <img
             alt="Man"
             src={NoImage}
@@ -88,17 +90,3 @@ function NavUser() {
 }
 
 export default NavUser;
-
-{
-  /* <div className="top-12 right-4  bg-gray-200 rounded-lg shadow-lg absolute">
-            <p>Prottoy09</p>
-          <button
-            onClick={signOut}
-            className="block px-3 py-1  text-gray-700 border-4 rounded-lg text-sm font-bold border-gray-400  hover:bg-gray-100 "
-          >
-            {signOutMutation.isLoading ? "Signing Out..." : "Sign Out"}
-          </button>
-        </div> 
-    
-    */
-}
