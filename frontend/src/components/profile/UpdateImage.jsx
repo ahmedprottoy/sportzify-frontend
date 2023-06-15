@@ -91,14 +91,7 @@ function UpdateImage({ closeModal }) {
         </label>
       </div>
 
-      {/* <button
-        className="p-3 bg-gray-200 w-40 rounded-lg"
-        onClick={handleSubmit}
-      >
-        Update Image
-      </button> */}
-
-      <ButtonUI text="Update Image" onClick={handleSubmit} type='submit' className='mt-5'/>
+      <ButtonUI text="Update Image" onClick={handleSubmit} type='submit' className='mt-5 w-40 mx-auto'/>
     </div>
   );
 }

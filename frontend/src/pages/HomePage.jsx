@@ -5,10 +5,18 @@ import Card from "../components/card/Card";
 import ErrorNotFound from "./ErrorNotFound";
 
 function HomePage() {
-  const pageSize = 10;
+  const pageSize = 12;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { isLoading, isError, data, error } = useQuery("blogs", getBlogsReq);
+  const {isError, data } = useQuery("blogs", getBlogsReq);
+
+  if (data) {
+    data.sort((a, b) => {
+      const dateA = new Date(a.postedAt);
+      const dateB = new Date(b.postedAt);
+      return dateB - dateA; // Sort in descending order
+    });
+  }
 
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;

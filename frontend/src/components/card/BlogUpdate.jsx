@@ -7,10 +7,12 @@ import { updateBlogReq } from "../../services/blogService";
 import { useMutation,useQueryClient } from "react-query";
 import ButtonUI from "../common/ButtonUI";
 import UpdateIcon from '../../assets/updateIcon.png'
+import errorImg from "../../assets/error.png";
 
 function BlogUpdate() {
   const { id } = useParams();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [isError, setIsError] = useState(null);
   const [blogData, setBlogData] = useState({
     title: "",
     content: "",
@@ -19,7 +21,7 @@ function BlogUpdate() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  const { data, isLoading, isError, error } = useBlogData(id);
+  const { data } = useBlogData(id);
 
   useEffect(() => {
     if (data) {
@@ -46,7 +48,16 @@ function BlogUpdate() {
     onSuccess:()=>{
         queryClient.invalidateQueries("blogData");
         navigate(`/article/${id}`);
-        }
+        },
+         onError : (err) => {
+      if (err.response.data.message){
+        setIsError(err.response.data.message);
+      }else{
+        setIsError(err.response.data.errors.undefined[0]);
+      }
+    }
+
+        
   });
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -57,9 +68,7 @@ function BlogUpdate() {
       updateBlogMutation.mutate({ formData, id });
     };
 
-  if (isLoading) return <div>Loading...</div>;
 
-  if (isError) return <div>Error: {error.message}</div>;
 
   return (
     <div>
@@ -85,6 +94,14 @@ function BlogUpdate() {
         title={blogData.title}
         content={blogData.content}
       />
+        {isError && (
+        <div className="w-60 md:w-80 p-2 mx-auto my-16 bg-rose-300 rounded-lg flex items-start">
+          <img alt="error" src={errorImg} className="w-5 h-5 mx-4 mt-1" />
+          <p>
+            {isError}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
