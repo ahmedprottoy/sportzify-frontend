@@ -10,7 +10,7 @@ function NavSearchBox() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
-  const { data, isError, error, isLoading, refetch } = useQuery(
+  const { data,refetch } = useQuery(
     ["searchUser", searchUser],
     () => getUserDataReq(searchUser),
     {

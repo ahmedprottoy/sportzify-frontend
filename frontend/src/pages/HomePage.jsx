@@ -45,7 +45,7 @@ function HomePage() {
   }
 
   return (
-    <div>
+    <div data-testid= 'homepage'>
       <div className="container mx-auto flex flex-wrap ">
         {paginatedData?.map((blog) => (
           <Card key={blog.id} blog={blog} />

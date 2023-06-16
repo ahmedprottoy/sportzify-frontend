@@ -40,7 +40,7 @@ function SignUp() {
   };
 
   return (
-    <section className="bg-white">
+    <div className="bg-white" data-testid="signup-page">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
         <SignUpCover />
 
@@ -53,7 +53,7 @@ function SignUp() {
           error={signUpMutation.error}
         />
       </div>
-    </section>
+    </div>
   );
 }
 
