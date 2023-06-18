@@ -14,16 +14,21 @@ function SearchedUser({ data, closeModal }) {
           src={imageUrl}
           alt="profile"
           className="h-28 w-28 rounded-full object-cover"
+          data-testid="user-avatar"
         />
         <div className="mx-20 flex flex-col gap-3">
           <p className="text-3xl">{fullname}</p>
-          <p className="text-xl text-gray-500">{username}</p>
+          <p className="text-xl text-gray-500" data-testid="user-name">
+            {username}
+          </p>
           <Button
+            testid="view-profile-button"
             text="View Profile"
             onClick={() => {
               closeModal();
               navigate(`/profile/${username}`);
             }}
+
           />
         </div>
       </div>

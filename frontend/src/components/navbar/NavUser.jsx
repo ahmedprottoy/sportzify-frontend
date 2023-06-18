@@ -4,9 +4,9 @@ import { signOutReq } from "../../services/authService";
 import { useMutation } from "react-query";
 import ProfileLogo from "../../assets/writer.png";
 import SignOutLogo from "../../assets/logout.png";
-import { AuthContext } from "../../context/authContext";
 import NoImage from "../../assets/NoImage.jpg";
 import ButtonUI from "../common/ButtonUI";
+import { AuthContext } from "../../context/authContext";
 
 function NavUser() {
   const { username, imageUrl, clearContext } = useContext(AuthContext);
