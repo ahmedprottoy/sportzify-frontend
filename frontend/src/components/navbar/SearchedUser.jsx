@@ -6,6 +6,11 @@ function SearchedUser({ data, closeModal }) {
   const { username, fullname, imageUrl } = data;
   const navigate = useNavigate();
 
+  const handleViewProfile = () => {
+    closeModal();
+    navigate(`/profile/${username}`);
+  };
+
   return (
     <div>
       <p className="text-2xl font-semibold mb-5">Result: </p>
@@ -22,13 +27,9 @@ function SearchedUser({ data, closeModal }) {
             {username}
           </p>
           <Button
-            testid="view-profile-button"
+            data-testid="view-profile-button"
             text="View Profile"
-            onClick={() => {
-              closeModal();
-              navigate(`/profile/${username}`);
-            }}
-
+            onClick={handleViewProfile}
           />
         </div>
       </div>
