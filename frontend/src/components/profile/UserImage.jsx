@@ -14,12 +14,14 @@ if (!imageUrl){
           src={imageUrl}
           alt="cf"
           className="w-full h-full object-cover rounded-full"
+          data-testid="user-image"
         />
       ) : (
         <img
           src={NoImage}
           alt="noImage"
           className="w-full h-full object-cover rounded-full"
+          data-testid="no-user-image"
         />
       )}
     </div>

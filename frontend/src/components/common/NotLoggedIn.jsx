@@ -21,8 +21,9 @@ function NotLoggedIn() {
           navigate("/sign-in");
         }}
         type="button"
-        className='my-10'
+        className="my-10"
         Icon={LogInIcon}
+        data-testid="not-logged-signin-button"
       />
     </div>
   );

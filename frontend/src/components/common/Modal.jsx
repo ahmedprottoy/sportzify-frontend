@@ -4,12 +4,16 @@ function Modal(props) {
   const { closeModal, content } = props;
 
   return (
-    <div className="fixed inset-0 z-50 p-4 flex items-center justify-center bg-black bg-opacity-70 transition-all duration-700">
+    <div
+      className="fixed inset-0 z-50 p-4 flex items-center justify-center bg-black bg-opacity-70 transition-all duration-700"
+      data-testid="dialog"
+    >
       <div className="flex flex-col gap-4 p-5 bg-white rounded-lg max-w-2xl w-1/2 max-h-[95vh]">
         <button
           type="button"
           className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
           onClick={closeModal}
+          data-testid="close-modal"
         >
           <svg
             aria-hidden="true"

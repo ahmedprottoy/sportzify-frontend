@@ -62,7 +62,7 @@ function ImageUpload({ onFileChange,image }) {
           </label>
         </div>
         {selectedImage && (
-          <button className="" onClick={handleCancelImage}>
+          <button className="" onClick={handleCancelImage} data-testid="remove-button">
             <p className="text-red-600">Remove</p>
           </button>
         )}

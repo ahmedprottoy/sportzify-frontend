@@ -25,9 +25,7 @@ const signInForm = (props) => {
         className="mx-auto mb-0 mt-8 max-w-md space-y-4"
       >
         <div>
-          <label className="labelField text-lg">
-            Email
-          </label>
+          <label className="labelField text-lg">Email</label>
 
           <div className="relative">
             <input
@@ -38,6 +36,7 @@ const signInForm = (props) => {
               autoComplete="off"
               value={userData.email}
               onChange={handleChange}
+              data-testid="email-input"
             />
 
             <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -60,9 +59,7 @@ const signInForm = (props) => {
         </div>
 
         <div>
-          <label  className="labelField text-lg">
-            Password
-          </label>
+          <label className="labelField text-lg">Password</label>
 
           <div className="relative">
             <input
@@ -73,6 +70,7 @@ const signInForm = (props) => {
               autoComplete="off"
               value={userData.password}
               onChange={handleChange}
+              data-testid="password-input"
             />
 
             <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -101,12 +99,13 @@ const signInForm = (props) => {
         </div>
 
         <div className="flex justify-between flex-col gap-3">
-          <Button text="Sign In" />
+          <Button text="Sign In" data-testid="sign-in-button" />
           <p className="mt-4 text-md text-gray-500 sm:mt-0">
             Don't have an account?
             <Link
               to="/sign-up"
               className=" text-lg ml-3 text-sky-700 underline"
+              data-testid="sign-in-link"
             >
               Sign Up
             </Link>

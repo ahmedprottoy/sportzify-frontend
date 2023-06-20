@@ -43,6 +43,7 @@ const signUpForm = (props) => {
               autoComplete="off"
               value={userData.username}
               onChange={handleChange}
+              data-testid="username-input"
             />
           </div>
 
@@ -59,6 +60,7 @@ const signUpForm = (props) => {
               autoComplete="off"
               value={userData.fullname}
               onChange={handleChange}
+              data-testid="fullname-input"
             />
           </div>
 
@@ -75,6 +77,7 @@ const signUpForm = (props) => {
               autoComplete="off"
               value={userData.email}
               onChange={handleChange}
+              data-testid="email-input"
             />
           </div>
 
@@ -91,6 +94,7 @@ const signUpForm = (props) => {
               autoComplete="off"
               value={userData.password}
               onChange={handleChange}
+              data-testid="password-input"
             />
           </div>
 
@@ -107,11 +111,12 @@ const signUpForm = (props) => {
               autoComplete="off"
               value={userData.confirmPassword}
               onChange={handleChange}
+              data-testid="confirmPassword-input"
             />
           </div>
 
           <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-            <Button text="Sign Up" disabled={isloading} />
+            <Button text="Sign Up" disabled={isloading} data-testid="sign-up-button"/>
 
             <p className="mt-4 text-md text-gray-500 sm:mt-0">
               Already have an account?

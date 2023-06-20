@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom";
 import dayjs from 'dayjs'
 
-function card({ blog }) {
+function card({ blog}) {
   const { username } = useContext(AuthContext);
 
   const [toggle, setToggle] = useState(false);
@@ -15,13 +15,17 @@ function card({ blog }) {
   };
 
   return (
-    <div className="shadow-xl group relative block lg:w-80 rounded-lg lg:h-96 m-5 overflow-hidden">
+    <div
+      className="shadow-xl group relative block lg:w-80 rounded-lg lg:h-96 m-5 overflow-hidden"
+      data-testid="blog-card"
+    >
       {blog.imageUrl ? (
         <img
           alt="Developer"
           src={blog.imageUrl}
           className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
+          data-testid="blog-image"
         />
       ) : (
         <img
@@ -41,6 +45,7 @@ function card({ blog }) {
             alt="option"
             className="h-3 absolute top-6 left-2 cursor-pointer "
             onClick={handleToggle}
+            data-testid="option-button"
           />
         )}
         {toggle && (
@@ -50,13 +55,17 @@ function card({ blog }) {
           {blog.author}
         </p>
         <div className="flex flex-col absolute top-0 right-0 p-2 rounded-lg text-slate-100 bg-indigo-400 text-sm lg:text-base">
-          <span> {dayjs(blog?.postedAt).format('DD')}</span>
-          <span> {dayjs(blog?.postedAt).format('MMM')}</span>
-          <span> {dayjs(blog?.postedAt).format('YYYY')}</span>
+          <span> {dayjs(blog?.postedAt).format("DD")}</span>
+          <span> {dayjs(blog?.postedAt).format("MMM")}</span>
+          <span> {dayjs(blog?.postedAt).format("YYYY")}</span>
         </div>
       </div>
 
-      <Link to={`/article/${blog.id}`} className="cursor-pointer">
+      <Link
+        to={`/article/${blog.id}`}
+        className="cursor-pointer"
+        data-testid="link"
+      >
         <div className="absolute  top-48 opacity-0 px-2 py-4 translate-y-0  transform transition-all group-hover:translate-y-20 ease-in group-hover:opacity-100 duration-300">
           <p
             className="text-sm text-gray-300 line-clamp-4 "

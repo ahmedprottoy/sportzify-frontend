@@ -13,6 +13,7 @@ function NoContent() {
         alt="no content"
         className="w-2/3 object-cover rounded-md"
         loading="lazy"
+        data-testid="no-content"
       />
 
       <p className='text-3xl font-semibold'>Nothing to show here...</p>
@@ -22,6 +23,7 @@ function NoContent() {
         onClick={() => navigate("/create")}
         className="mt-10"
         Icon={CreateIcon}
+        data-testid="create-button"
       />
     </div>
   );

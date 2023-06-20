@@ -46,6 +46,7 @@ function CardOption({ blogId, onClose }) {
           className="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
           title="Edit"
           onClick={handleUpdate}
+          data-testid="edit-button"
         >
           <img src={EditIcon} alt="delete" className="h-5 w-5" />
         </button>
@@ -54,6 +55,7 @@ function CardOption({ blogId, onClose }) {
           className="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative"
           title="Delete"
           onClick={handleDelete}
+          data-testid="delete-button"
         >
           <img src={DeleteIcon} alt="delete" className="h-5 w-5" />
         </button>
