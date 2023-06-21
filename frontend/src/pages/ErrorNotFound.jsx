@@ -7,7 +7,10 @@ import ButtonUI from "../components/common/ButtonUI";
 function ErrorNotFound() {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center">
+    <div
+      className="flex flex-col items-center"
+      data-testid="error-not-found-component"
+    >
       <img src={NotFound} alt="error" className="w-7/12" />
       <ButtonUI text="Go Back!" onClick={() => navigate(-1)} Icon={Icon} />
     </div>
