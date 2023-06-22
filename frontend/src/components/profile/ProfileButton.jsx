@@ -48,7 +48,7 @@ function ProfileButton() {
   };
 
   return (
-    <div className="absolute top-10 right-10">
+    <div className="absolute top-10 right-10" >
       <div className="relative inline-block text-left">
         <div>
           <ButtonUI
@@ -58,6 +58,7 @@ function ProfileButton() {
             }}
             Icon={Edit}
             className={isToggle ? "bg-gray-800" : ""}
+            data-testid="edit-profile-button"
           />
         </div>
 

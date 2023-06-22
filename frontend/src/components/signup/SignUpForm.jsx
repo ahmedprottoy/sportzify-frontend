@@ -29,6 +29,7 @@ const signUpForm = (props) => {
         <form
           onSubmit={handleSubmit}
           className="mt-8 grid grid-cols-6 gap-6 p-4"
+          data-testid="sign-up-form"
         >
           <div className="col-span-6 sm:col-span-3">
             <label className="labelField">
@@ -112,6 +113,7 @@ const signUpForm = (props) => {
               value={userData.confirmPassword}
               onChange={handleChange}
               data-testid="confirmPassword-input"
+            
             />
           </div>
 

@@ -23,6 +23,7 @@ const signInForm = (props) => {
       <form
         onSubmit={handleSubmit}
         className="mx-auto mb-0 mt-8 max-w-md space-y-4"
+        data-testid="sign-in-form"
       >
         <div>
           <label className="labelField text-lg">Email</label>

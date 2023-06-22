@@ -5,7 +5,7 @@ import Email from "../../assets/email.png";
 
 function UserInfo({ username, fullname, email }) {
   return (
-    <div>
+    <div data-testid='user-info'>
       <div className="mt-32 mx-auto w-[50%] items-center flex flex-col gap-5">
         <div>
           <p className="text-4xl font-semibold">{fullname}</p>

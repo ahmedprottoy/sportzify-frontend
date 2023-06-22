@@ -7,7 +7,7 @@ function UserBlogs({ userBlogs }) {
   }
 
   return (
-    <div>
+    <div data-testid='user-blogs'>
       <div className="container mx-auto flex flex-wrap justify-evenly">
         {userBlogs.map((blog) => (
           <Card key={blog.id} blog={blog} />

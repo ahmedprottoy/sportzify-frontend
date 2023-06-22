@@ -3,7 +3,10 @@ import signInBG from "../../assets/signup-bg4.jpg";
 
 const signInCover = () => {
   return (
-    <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+    <div
+      className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2"
+      data-testid="sign-in-cover"
+    >
       <img
         alt="Welcome"
         src={signInBG}

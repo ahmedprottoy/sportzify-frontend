@@ -8,6 +8,7 @@ const signUpCover = () => {
           alt="Night"
           src={signUpBG}
           className="absolute inset-0 h-full w-full object-cover opacity-60"
+          data-testid="sign-up-cover"
         />
 
         <div className="hidden lg:relative lg:block lg:p-12  ">

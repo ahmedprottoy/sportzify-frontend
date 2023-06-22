@@ -18,7 +18,8 @@ function SignIn() {
   const signInMutation = useMutation(signInReq, {
     onSuccess: (data) => {
       setUsername(data.data.username);
-      setImageUrl(data.data.imageURL), setIsLoggedIn(true);
+      setImageUrl(data.data.imageURL);
+      setIsLoggedIn(true);
       navigate("/");
     },
   });
