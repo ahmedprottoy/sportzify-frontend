@@ -42,7 +42,7 @@ function NavSearchBox() {
         className="h-10 w-full rounded-full border-2 border-gray-400 bg-white pe-10 ps-4 text-sm shadow-sm sm:w-56"
         id="search"
         type="search"
-        placeholder="Search..."
+        placeholder="Search By Username..."
         autoComplete="off"
         value={searchUser}
         onChange={(e) => setSearchUser(e.target.value)}
