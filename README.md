@@ -10,7 +10,7 @@ Sportzify is a  user-friendly sports-blogging platform that allows sports enthus
 
 - [Installation](#installation)
 - [Technologies Used](#technologies-used)
-- [License](#license)
+
 
 ## Installation
 
